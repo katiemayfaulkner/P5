@@ -8,12 +8,12 @@ header .container {
   align-items: center;
 }
 header .container img {
-  height: 70px;
+  height: 50px;
   margin: 15px;
 }
 header .container a img {
   margin: 15px;
-  height: 40px;
+  height: 30px;
 }
 
 section {
@@ -50,4 +50,42 @@ footer .container .row p {
   color: white;
   padding: 0;
   margin: 0;
+}
+
+article {
+  padding: 30px;
+}
+article a {
+  display: flex;
+  margin: 15px;
+}
+article a img {
+  height: 25px;
+  margin-right: 5px;
+}
+article a h1 {
+  font-size: 20px;
+  color: black;
+}
+article .container .row {
+  width: 100%;
+  height: 550px;
+  background-color: #F2F2F2;
+  border-radius: 25px;
+  padding: 25px;
+  display: flex;
+}
+article .container .row div {
+  border: black solid 2px;
+  margin: 0 auto;
+  position: relative;
+}
+article .container .row div span {
+  border-radius: 50px;
+  color: white;
+  font-weight: 500;
+  background: linear-gradient(160deg, #e68a0a 0%, #8f5bfe 100%);
+  padding: 10px 50px;
+  position: absolute;
+  bottom: 0px;
 }/*# sourceMappingURL=styles.css.map */
