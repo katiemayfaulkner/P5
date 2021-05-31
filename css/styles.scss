@@ -22,7 +22,7 @@ header{
     }
 }
 
-section{
+.allProducts{
     text-align: center;
     margin: 60px 0;
 
@@ -108,10 +108,10 @@ article{
                    color: white;
                    font-weight: 500;
                    background: linear-gradient(160deg, rgba(230,138,10,1) 0%, rgba(143,91,254,1) 100%);
-                   padding: 10px 50px;
+                   padding: 10px 30px;
                    position: absolute;
                    bottom: 0px;
-                   
+                   cursor: pointer;
                }
             }
         }
@@ -119,3 +119,37 @@ article{
 }
 
 // Cart //
+.cart{
+    padding: 30px; 
+    
+    a{
+        display: flex;
+        margin: 15px;
+
+        img{
+            height: 25px;
+            margin-right: 5px;
+        }
+        
+        h1{
+            font-size: 20px;
+            color: black;
+        }
+
+    } 
+
+    .items{
+        padding: 0 15px;
+        
+        div{
+            margin: 5px 0;
+            background-color: #F2F2F2;
+            width: 100%;
+            height: 50px;
+        }
+    }
+
+    .info{
+        padding: 0 15px;
+    }
+}
