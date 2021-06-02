@@ -31,19 +31,20 @@ header {
   }
 
   .row {
-    margin-top: 30px;
 
-    .card {
+    .item {
       padding: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       background-color: #f2f2f2;
       height: 500px;
       border-radius: 25px;
-
+      
       img {
         width: 100%;
         border-radius: 25px;
+        margin-bottom: 15px; 
       }
+
     }
   }
 }

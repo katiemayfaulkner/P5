@@ -23,19 +23,17 @@ header .container a img {
 .allProducts h1 {
   font-size: 30px;
 }
-.allProducts .row {
-  margin-top: 30px;
-}
-.allProducts .row .card {
+.allProducts .row .item {
   padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   background-color: #f2f2f2;
   height: 500px;
   border-radius: 25px;
 }
-.allProducts .row .card img {
+.allProducts .row .item img {
   width: 100%;
   border-radius: 25px;
+  margin-bottom: 15px;
 }
 
 footer {
