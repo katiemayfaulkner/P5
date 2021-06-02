@@ -8,38 +8,57 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title> Product - Orinoco </title>
-    //TODO : selected product name
+    <title> Order Confirmation - Orinoco </title>
 </head>
 
 <body>
     <header>
         <div class="container">
             <img src="img/logo.png" alt="">
-            <a href="Cart.html">
+            <a href="cart.html">
                 <img src="img/shopping-cart.png" alt="">
             </a>
         </div>
     </header>
 
-     <article>
-         <a href="index.html">
-            <img src="img/return-arrow.png" alt="">
-            <h1> Go back </h1>
-        </a>
+    <section class="confirmation">
         <div class="container">
-            <div class="row"> 
-                <div class="col-sm-12 col-lg-6">
-                    <!-- img -->
-                    <!-- customization -->
-                </div>
-                <div class="col-sm-12 col-lg-6">
-                    <!-- info : price, description, add 2 cart, ect.... -->
-                    <span> Add to cart </span>  
-                </div>
-            </div>
+                <article>
+                    <h1> Thank you for your order! </h1>
+                    <p> Your order has been recieved.</p>
+                    <p> We have emailed you an order confirmation, and you will be notified when your order has been shipped. </p>
+                </article>
+
+                <article class="items">
+                    <h2> Your items </h2>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div class="total">
+                        <h3>Total</h3>
+                    </div>
+                </article>
+
+                <article class="row">
+                    <div class="col-lg-6">
+                        <h2> Order confirmation number: </h2>
+                    </div>
+                    <div class="col-lg-6">
+                        <h2> Customer information: </h2>
+                        <!-- mail, number, name -->
+                    </div>
+                    <div class="col-lg-6">
+                        <h2> Your delivery address: </h2>
+                        <!-- city, postal code ect -->
+                    </div>
+                    <div class="col-lg-6">
+                        <h2> Your billing address: </h2>
+                        <!-- city, postal code ect -->
+                    </div>
+                </article>
         </div>
-     </article>
+    </section>
 
     <footer>
         <div class="container">
