@@ -11,6 +11,8 @@ fetch('http://localhost:3000/api/cameras')
     box.classList.add('item');
     box.classList.add('col-lg-4');
     box.classList.add('col-md-6');
+    box.setAttribute("id", "products");
+
         // Image
     let img = document.createElement('img');
     img.setAttribute('src', data[i].imageUrl)
@@ -30,7 +32,7 @@ fetch('http://localhost:3000/api/cameras')
     let lenses = document.createElement('p');
     lenses.innerHTML = 'Lens options : ' + data[i].lenses;
 
-      //Append it
+      //Append them
       box.appendChild(img);
       box.appendChild(name);
       box.appendChild(price);
@@ -39,11 +41,29 @@ fetch('http://localhost:3000/api/cameras')
 
        // Append it to something!
       allProducts.appendChild(box);
+
+
+      // Create anchor element.
+var a = document.createElement('a'); 
+  
+// Create the text node for anchor element.
+var link = document.createTextNode("See more");
+  
+// Append the text node to anchor element.
+a.appendChild(link); 
+  
+// Set the title.
+a.title = "This is Link"; 
+  
+// Set the href property.
+a.href = "SingleProduct.html"; 
+
+
+console.log(box)
+
+// Append the anchor element .
+box.append(a);
     
         }
-    })
-
+})
     .catch(err => console.log(err))
-
-
-
