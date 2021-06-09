@@ -30,7 +30,7 @@ fetch('http://localhost:3000/api/cameras')
           
 
           let price = document.createElement('p');
-          price.innerHTML = '$' + data[i].price;
+          price.innerHTML = `${data[i].price / 100}.00$`;
 
           let description = document.createElement('p');
           description.innerHTML = data[i].description;
@@ -73,4 +73,4 @@ fetch('http://localhost:3000/api/cameras')
           console.log(box)
         }
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log('Error: Fetch request failed'))

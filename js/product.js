@@ -2,14 +2,33 @@ const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
 
 console.log(productId)
+console.log(urlParams)
 
-/**
- * TODO: Get single product detqils fro, the API viq product ID
- */
+var img = document.getElementById('productImg')
+var camera = document.getElementById('productName')
+var options = document.getElementById('productOptions')
+var price = document.getElementById('productPrice')
+var description = document.getElementById('productDescription')
+
+/* TODO: Get single product details from the API via product ID */
+
 function getProduct() {
-    fetch()
+    fetch('http://localhost:3000/api/cameras/' + productId) 
+    .then(response => response.json())
+    .then(data => { console.log(data);
+
+
+        img.src = `${data.imageUrl}`;
+        options.textContent = `${data.lenses}`;
+        camera.textContent = `${data.name}`;
+        price.textContent = `${data.price / 100}.00$`;
+        description.textContent = `${data.description}`;
+        
+    })
+    .catch(err => console.log('Error: Fetch request failed'))
 }
 getProduct();
+
 
 
 
