@@ -70,9 +70,25 @@ article .container .row {
   padding: 25px;
   display: flex;
 }
+article .container .row img {
+  margin: 10px 0;
+}
 article .container .row div {
   margin: 0 auto;
-  position: relative;
+}
+article .container .row div #productName {
+  margin: 10px 0;
+  font-size: 27px;
+}
+article .container .row div #productPrice {
+  font-size: 22px;
+}
+article .container .row div #productDescription {
+  font-size: 18px;
+  margin: 30px 0;
+}
+article .container .row div #productOptions {
+  margin: 30px 0;
 }
 article .container .row div span {
   border-radius: 50px;
@@ -80,8 +96,6 @@ article .container .row div span {
   font-weight: 500;
   background: linear-gradient(160deg, #e68a0a 0%, #8f5bfe 100%);
   padding: 10px 30px;
-  position: absolute;
-  bottom: 0px;
   cursor: pointer;
 }
 

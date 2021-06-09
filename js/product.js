@@ -19,7 +19,7 @@ function getProduct() {
 
 
         img.src = `${data.imageUrl}`;
-        options.textContent = `${data.lenses}`;
+        options.textContent = 'Lens options : ' + `${data.lenses}`;
         camera.textContent = `${data.name}`;
         price.textContent = `${data.price / 100}.00$`;
         description.textContent = `${data.description}`;

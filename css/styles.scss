@@ -74,8 +74,7 @@ article {
     display: flex;
     margin: 15px;
 
-    img {
-      
+    img { 
       margin-right: 5px;
     }
 
@@ -86,6 +85,7 @@ article {
   }
 
   .container {
+    
     .row {
       width: 100%;
       background-color: #f2f2f2;
@@ -93,9 +93,30 @@ article {
       padding: 25px;
       display: flex;
 
+      img{
+        margin: 10px 0;
+      }
+
       div {
         margin: 0 auto;
-        position: relative;
+
+        #productName{
+          margin: 10px 0;
+          font-size: 27px;
+        }
+
+        #productPrice{
+          font-size: 22px;
+        }
+        
+        #productDescription{
+          font-size: 18px;
+          margin: 30px 0;
+        }
+
+        #productOptions{
+          margin: 30px 0;
+        }
 
         span {
           border-radius: 50px;
@@ -103,8 +124,6 @@ article {
           font-weight: 500;
           background: linear-gradient( 160deg,rgba(230, 138, 10, 1) 0%,rgba(143, 91, 254, 1) 100%);
           padding: 10px 30px;
-          position: absolute;
-          bottom: 0px;
           cursor: pointer;
         }
       }
