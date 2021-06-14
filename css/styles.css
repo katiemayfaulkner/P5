@@ -24,13 +24,22 @@ header .container a img {
   font-size: 30px;
 }
 .allProducts .row .item {
+  padding: 15px;
+}
+.allProducts .row .item .content {
   padding: 20px;
-  margin-bottom: 30px;
   background-color: #f2f2f2;
   border-radius: 25px;
 }
-.allProducts .row .item img {
+.allProducts .row .item .content a {
+  color: black;
+}
+.allProducts .row .item .content a:hover {
+  text-decoration: none;
+}
+.allProducts .row .item .content img {
   width: 100%;
+  height: 180px;
   border-radius: 25px;
   margin-bottom: 15px;
 }

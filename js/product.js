@@ -25,7 +25,7 @@ function getProduct() {
         description.textContent = `${data.description}`;
         
     })
-    .catch(err => console.log('Error: Fetch request failed'))
+    .catch(err => console.log(err))
 }
 getProduct();
 
