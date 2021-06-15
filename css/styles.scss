@@ -53,11 +53,7 @@ header {
           height: 180px;
           border-radius: 25px;
           margin-bottom: 15px; 
-        }
-
-
-
-        
+        } 
       }
     }
   }
@@ -113,7 +109,7 @@ article {
         margin: 10px 0;
       }
 
-      div {
+      .productInfo {
         margin: 0 auto;
 
         #productName{
@@ -127,11 +123,22 @@ article {
         
         #productDescription{
           font-size: 18px;
-          margin: 30px 0;
         }
 
-        #productOptions{
-          margin: 30px 0;
+        .dropdown{
+
+          .btn{
+            border: 1px solid black;
+          }
+  
+          #productOptions{
+            display: none;
+            margin-top: 10px;
+  
+            &.show {
+              display: flex;
+            }
+          }
         }
 
         span {
@@ -141,6 +148,10 @@ article {
           background: linear-gradient( 160deg,rgba(230, 138, 10, 1) 0%,rgba(143, 91, 254, 1) 100%);
           padding: 10px 30px;
           cursor: pointer;
+          width: 150px;
+          display: block;
+          bottom: 0;
+          margin: 20px 0;
         }
       }
     }

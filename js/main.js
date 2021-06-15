@@ -11,8 +11,6 @@ fetch('http://localhost:3000/api/cameras')
           box.classList.add('item');
           box.classList.add('col-lg-4');
           box.classList.add('col-md-6');
-          // box.classList.add('ml-3');
-          // box.classList.add('mb-3');
           box.setAttribute("id", "products");
 
           //Create box inside box for spacing

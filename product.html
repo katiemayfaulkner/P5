@@ -30,11 +30,15 @@
         <div class="container">
             <div class="row">  
                 <img class="col-sm-12 col-lg-7" id="productImg">
-                <div class="col-sm-12 col-lg-5">
+                <div class="productInfo col-sm-12 col-lg-5">
                     <h2 id="productName"></h2>
                     <h3 id="productPrice"></h3>
                     <p id="productDescription"></p>
-                    <div id="productOptions"></div>
+                    <div class="dropdown">
+                        <button class="btn" id="dropdown" onclick="function toggleFunction()">
+                        </button>
+                        <div id="productOptions"></div>
+                    </div>
                     <span> Add to cart </span>  
                 </div>
             </div>

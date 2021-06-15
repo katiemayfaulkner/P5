@@ -19,15 +19,41 @@ function getProduct() {
 
 
         img.src = `${data.imageUrl}`;
-        options.textContent = 'Lens options : ' + `${data.lenses}`;
+        btn.textContent = 'See lens options '
         camera.textContent = `${data.name}`;
         price.textContent = `${data.price / 100}.00$`;
         description.textContent = `${data.description}`;
+        options.textContent = `${data.lenses}`;
         
+        
+        // for(let i = 0; i < data.length; i++) { 
+            
+            //     //Create box
+            //     let lenses = document.createElement('div');
+            //     lenses.classList.add('lenses')
+            
+            //     //Lenses
+            //     lenses.innerHTML = `${data.lenses}`;
+            //     lenses.innerHTML = data.lenses[i];
+            
+            //     //Append them to something 
+            
+            //     lenses.appendChild(items)
+            
+            // }
+        })
+        .catch(err => console.log(err))
+    }
+    getProduct();
+    
+    // Dropdown appears/disappears on click
+    var btn = document.getElementById("dropdown")
+    var items = document.getElementById("productOptions")
+
+    btn.addEventListener('click', function toggleFunction() {
+    items.classList.toggle('show')
     })
-    .catch(err => console.log(err))
-}
-getProduct();
+
 
 
 

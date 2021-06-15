@@ -82,30 +82,40 @@ article .container .row {
 article .container .row img {
   margin: 10px 0;
 }
-article .container .row div {
+article .container .row .productInfo {
   margin: 0 auto;
 }
-article .container .row div #productName {
+article .container .row .productInfo #productName {
   margin: 10px 0;
   font-size: 27px;
 }
-article .container .row div #productPrice {
+article .container .row .productInfo #productPrice {
   font-size: 22px;
 }
-article .container .row div #productDescription {
+article .container .row .productInfo #productDescription {
   font-size: 18px;
-  margin: 30px 0;
 }
-article .container .row div #productOptions {
-  margin: 30px 0;
+article .container .row .productInfo .dropdown .btn {
+  border: 1px solid black;
 }
-article .container .row div span {
+article .container .row .productInfo .dropdown #productOptions {
+  display: none;
+  margin-top: 10px;
+}
+article .container .row .productInfo .dropdown #productOptions.show {
+  display: flex;
+}
+article .container .row .productInfo span {
   border-radius: 50px;
   color: white;
   font-weight: 500;
   background: linear-gradient(160deg, #e68a0a 0%, #8f5bfe 100%);
   padding: 10px 30px;
   cursor: pointer;
+  width: 150px;
+  display: block;
+  bottom: 0;
+  margin: 20px 0;
 }
 
 .cart {
