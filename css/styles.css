@@ -136,14 +136,50 @@ article .container .row .productInfo span {
 .cart .items {
   padding: 0 15px;
 }
-.cart .items div {
+.cart .items .cartSections {
+  display: flex;
+  width: 100%;
+}
+.cart .items .cartSections h3 {
+  border-bottom: 3px solid black;
+  font-size: 20px;
+  margin-right: 10px;
+}
+.cart .items .cartProducts {
   margin: 5px 0;
   background-color: #f2f2f2;
   width: 100%;
-  height: 50px;
+  height: 60px;
+  display: flex;
+}
+.cart .items .cartProducts img {
+  height: 100%;
+}
+.cart .items .cartProducts .quantity {
+  display: flex;
+  justify-content: center;
+}
+.cart .items .cartProducts .quantity input {
+  width: 20px;
+}
+.cart .items .cartProducts .quantity .button {
+  border: 3px solid black;
+  border-radius: 50px;
+  padding: 0 5px;
+  margin: 5px;
+}
+.cart .items .cartProducts #removeBtn {
+  border: none;
+  padding: 0 30px;
 }
 .cart .info {
   padding: 0 15px;
+}
+.cart .info #submitBtn {
+  background: linear-gradient(160deg, #e68a0a 0%, #8f5bfe 100%);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
 }
 
 .confirmation .container .items div {

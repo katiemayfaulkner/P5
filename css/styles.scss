@@ -180,21 +180,65 @@ article {
   .items {
     padding: 0 15px;
 
-    div {
+    .cartSections{
+      display: flex;
+      width: 100%;
+      
+      h3{
+        border-bottom: 3px solid black;
+        font-size: 20px;
+        margin-right: 10px;
+      }
+    }
+
+    .cartProducts {
       margin: 5px 0;
       background-color: #f2f2f2;
       width: 100%;
-      height: 50px;
+      height: 60px;
+      display: flex;
+
+      img{
+        height: 100%;
+      }
+
+      .quantity{
+        display: flex;
+        justify-content: center;
+
+        input{
+          width: 20px;
+        }
+
+        .button{
+          border: 3px solid black;
+          border-radius: 50px;
+          padding: 0 5px;
+          margin: 5px;
+
+        }
+      }
+
+      #removeBtn{
+        border: none;
+        padding: 0 30px;
+      }
     }
   }
-
+  
   .info {
     padding: 0 15px;
+    
+    #submitBtn{
+      background: linear-gradient(160deg, #e68a0a 0%, #8f5bfe 100%);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 10px;
+    }
   }
 }
 
 // Confirmation //
-
 .confirmation {
   .container {
     .items {
