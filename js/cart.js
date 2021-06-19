@@ -76,17 +76,17 @@ fetch('http://localhost:3000/api/cameras')
     .catch(err => console.log(err))
 
 
-// //** REMOVE BTN
-// var removeBtn = document.getElementsByClassName('btn-remove')
+//** REMOVE BTN
+var removeBtn = document.getElementsByClassName('btn-remove')
 
-// console.log(removeBtn)
+console.log(removeBtn)
 
-// for(var i = 0; i < removeBtn.length; i++) {
-//      var btn = removeBtn[i]
-//      btn.addEventListener('click', function(event) {
-//          console.log('clicked')
+for(var i = 0; i < removeBtn.length; i++) {
+     var btn = removeBtn[i]
+     btn.addEventListener('click', function(event) {
+         console.log('clicked')
 
-//          var btnClicked =  event.target
-//          btnClicked.parentElement.remove()
-//      })
-// }
+         var btnClicked =  event.target
+         btnClicked.parentElement.remove()
+     })
+}
