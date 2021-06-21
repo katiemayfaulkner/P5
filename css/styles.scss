@@ -192,36 +192,49 @@ article {
     }
 
     .cartProducts {
-      margin: 5px 0;
-      background-color: #f2f2f2;
-      width: 100%;
-      height: 60px;
-      display: flex;
-
-      img{
-        height: 100%;
-      }
-
-      .quantity{
+      
+      .cartProduct{
+        margin: 5px 0;
+        background-color: #f2f2f2;
+        width: 100%;
+        height: 60px;
         display: flex;
-        justify-content: center;
 
-        input{
-          width: 20px;
+        img{
+          height: 100%;
         }
-
-        .button{
-          border: 3px solid black;
-          border-radius: 50px;
-          padding: 0 5px;
-          margin: 5px;
-
+  
+        .quantity{
+          display: flex;
+          justify-content: center;
+  
+          input{
+            width: 100%;
+          }
+  
+          .button{
+            border: 3px solid black;
+            border-radius: 50px;
+            padding: 0 5px;
+            margin: 5px;
+  
+          }
+        }
+  
+        #removeBtn{
+          border: none;
+          padding: 0 30px;
         }
       }
 
-      #removeBtn{
-        border: none;
-        padding: 0 30px;
+    }
+
+    .cartTotal{
+      display: flex;
+      align-items: center;
+      
+      span{
+        margin: 0 10px;
       }
     }
   }
