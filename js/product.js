@@ -19,17 +19,6 @@
 // let yahya = new Human('Yahyq', 'normal');
 // yahya.talk('BOM BOM BOM BOM.  ')
 
-
-// Dropdown appears/disappears on click
-    var btn = document.getElementById("dropdown")
-    var items = document.getElementById("productOptions")
-    
-    btn.addEventListener('click', function toggleFunction() {
-        items.classList.toggle('show')
-    })
-
-    // $('.dropdown-toggle').dropdown();
-
     
 // TODO: Get single product details from the API via product ID 
 const urlParams = new URLSearchParams(window.location.search);
@@ -42,51 +31,37 @@ var img = document.getElementById('productImg')
 var camera = document.getElementById('productName')
 var price = document.getElementById('productPrice')
 var description = document.getElementById('productDescription')
-var options = document.getElementById('productOptions')
-
+let productOptions = document.getElementById('product_options');
 
 function getProduct() {
-    fetch('http://localhost:3000/api/cameras/' + productId) 
-    .then(response => response.json())
-    .then(data => { 
-        console.log(data);
+    fetch('http://localhost:3000/api/cameras/' + productId)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
 
-        img.src = `${data.imageUrl}`;
-        btn.textContent = 'See lens options '
-        camera.textContent = `${data.name}`;
-        price.textContent = `${data.price / 100}.00$`;
-        description.textContent = `${data.description}`;
-        // options.textContent = `${data.lenses}`;
-
-        
-        for(let i = 0; i < data.length; i++) { 
+            img.src = `${data.imageUrl}`;
+            camera.textContent = `${data.name}`;
+            price.textContent = `${data.price / 100}.00$`;
+            description.textContent = `${data.description}`;
+            // options.textContent = `${data.lenses}`;
             
-                //Create box
-                let singleLens = document.createElement('div');
-                singleLens.classList.add('singleLens')
-                singleLens.setAttribute("id", "singleLens");
-
-                console.log(singleLens)
-            
-                //Lenses
-                let lens = document.createElement('p')
-                lens.innerHTML = `${data.lenses}`;
-          
-                // lens.innerHTML = data[i].lenses;
-            
-                //Append to something 
-                singleLens.appendChild(lens)
-                options.appendChild(singleLens)
-
-                console.log('options')
-        }
-
+            for (let i = 0; i < data.lenses.length; i++) {
+                let option = document.createElement('option');
+                option.value = data.lenses[i];
+                option.innerHTML = data.lenses[i];
+                productOptions.appendChild(option);
+            }
         })
         .catch(err => console.log(err))
-    }
-    getProduct();
-    
+}
+getProduct();
 
+/*** Select Input Event */
+productOptions.addEventListener('change', (e) => {
+    // Here's the value, printed in the console, save it wherever you want ;) (localStorage)
+    console.log(e.target.value)
+})
+    
 
 
 
