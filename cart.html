@@ -43,8 +43,6 @@
                             <img src="img/vcam_1.jpg" alt="" class="col-3" id="productImg">
                             <div class="quantity col-3">
                                 <input class="itemQuantity" type="number" value="1"></input>
-                                <span class="button" id="Button"> + </span>
-                                <span class="button" id="Button"> - </span>
                             </div>
                             <div class="price col-3" id="productPrice"> $15</div>
                             <button class="btn-remove" id="removeBtn"> Remove </button>
@@ -53,9 +51,7 @@
                         <div class="cartProduct">
                             <img src="img/vcam_2.jpg" alt="" class="col-3" id="productImg">
                             <div class="quantity col-3">
-                                <input type="number" name="quantity" value="2" class="itemQuantity"></input>
-                                <span class="button" id="Button"> + </span>
-                                <span class="button" id="Button"> - </span>
+                                <input type="number" name="quantity" value="2" class="itemQuantity"></input>   
                             </div>
                             <div class="price col-3" id="productPrice"> $30</div>
                             <button class="btn-remove" id="removeBtn"> Remove </button>
@@ -63,7 +59,7 @@
                     </div>
 
                     <div class="cartTotal">
-                        <h3> Total : </h3>
+                        <h3> Total :</h3>
                         <span id="totalPrice"> </span>
                     </div>
                 </article>
@@ -135,7 +131,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-    <script src="js/cart.js"></script>
+    <script src="js/cart.js" async></script>
 </body>
 
 </html>
