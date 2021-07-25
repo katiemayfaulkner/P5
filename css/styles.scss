@@ -194,7 +194,6 @@ article {
     }
 
     .cartProducts {
-      margin-bottom: 20px;
 
       .cartProduct{
         margin: 5px 0;
@@ -230,12 +229,28 @@ article {
 
     }
 
-    .cartTotal{
+    .section{
       display: flex;
-      align-items: center;
-      
-      span{
-        margin: 0 10px;
+      justify-content: space-between;
+      margin: 20px 0;
+
+      .cartTotal{
+        display: flex;
+        align-items: center;
+        
+        span{
+          margin: 0 10px;
+        }
+      }
+  
+      #emptyCart{
+        background: linear-gradient(160deg, #e68a0a 0%, #8f5bfe 100%);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 10px;
+        margin-right: 65px;
+        border: none;
+        height: 50px;
       }
     }
   }

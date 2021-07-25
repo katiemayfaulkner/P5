@@ -147,9 +147,6 @@ article .container .row .productInfo span {
   font-size: 20px;
   margin-right: 10px;
 }
-.cart .items .cartProducts {
-  margin-bottom: 20px;
-}
 .cart .items .cartProducts .cartProduct {
   margin: 5px 0;
   background-color: #f2f2f2;
@@ -176,12 +173,26 @@ article .container .row .productInfo span {
   border: none;
   padding: 0 30px;
 }
-.cart .items .cartTotal {
+.cart .items .section {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+.cart .items .section .cartTotal {
   display: flex;
   align-items: center;
 }
-.cart .items .cartTotal span {
+.cart .items .section .cartTotal span {
   margin: 0 10px;
+}
+.cart .items .section #emptyCart {
+  background: linear-gradient(160deg, #e68a0a 0%, #8f5bfe 100%);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-right: 65px;
+  border: none;
+  height: 50px;
 }
 .cart .info {
   padding: 0 15px;
