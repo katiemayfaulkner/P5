@@ -204,17 +204,30 @@ article .container .row .productInfo span {
   border-radius: 10px;
 }
 
-.confirmation .container .items div {
+.confirmation .container .article {
+  margin: 15px 0;
+}
+.confirmation .container .items .cartProduct {
   margin: 5px 0;
   background-color: #f2f2f2;
   width: 100%;
-  height: 50px;
+  height: 60px;
+  display: flex;
+}
+.confirmation .container .items .cartProduct h3 {
+  font-size: 20px;
+  line-height: 60px;
+}
+.confirmation .container .items .cartProduct .quantity {
+  display: flex;
+  justify-content: center;
+}
+.confirmation .container .items .cartProduct .quantity input {
+  width: 100%;
+  text-align: center;
 }
 .confirmation .container .items .total {
   margin-top: 20px;
-  background-color: white;
-  border-top: #f2f2f2 solid 4px;
-  border-bottom: #f2f2f2 solid 4px;
 }
 .confirmation .container .row div h2 {
   font-size: 25px;
