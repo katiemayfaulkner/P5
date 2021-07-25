@@ -73,20 +73,27 @@ addBtn.onclick = function addToLocalStorage() {
     var price = document.getElementById('productPrice').textContent
     var img = document.getElementById('productImg').src
 
-    console.log(name, price, img)
-
-    var oldInput = localStorage.getItem(name, price, img);
+    var oldInput = localStorage.getItem(name, img, price);
 
     //If we already have value, retrieve it
-    if(localStorage.getItem(name, price, img)){
+    if(localStorage.getItem(name, price)){
         // and update input with old/existing user input
         addBtn.value = oldInput;
+
         console.log("Item already added to cart!")
         alert("Item already added to cart!")
         
     } else{
         // or store user input in local storqge
-        localStorage.setItem(name, price, img);
+        localStorage.setItem(name, price)
+
+        // var item = [name, price]
+        // localStorage.setItem(img, JSON.stringify(item));
+        // var test = JSON.parse(localStorage.getItem("testKey"));
+        // alert(test);
+        
+
         console.log("Item added to cart!")
+        console.log(name, price)
     }
 };

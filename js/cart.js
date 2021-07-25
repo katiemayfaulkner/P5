@@ -4,7 +4,7 @@ var cart = document.getElementById('cartProducts')
 for (let i = 0; i < localStorage.length; i++){
         let key = localStorage.key(i);
         let value = localStorage.getItem(key);
-        var image = JSON.parse(localStorage.getItem("img"))
+        // var image = localStorage.getItem('img')
 
     //Create box
     let box = document.createElement('div');
@@ -17,7 +17,8 @@ for (let i = 0; i < localStorage.length; i++){
     // var img = document.createElement('img');
     // img.classList.add('img');
     // img.setAttribute('id', 'image');
-    // img.src = img;
+    // img.src = key;
+
     // box.appendChild(img);
 
     //Title
