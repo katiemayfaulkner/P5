@@ -135,15 +135,20 @@ article .container .row .productInfo span {
 }
 .cart .items {
   padding: 0 15px;
+  margin: 40px 0;
 }
 .cart .items .cartSections {
   display: flex;
   width: 100%;
+  margin-top: 20px;
 }
 .cart .items .cartSections h3 {
   border-bottom: 3px solid black;
   font-size: 20px;
   margin-right: 10px;
+}
+.cart .items .cartProducts {
+  margin-bottom: 20px;
 }
 .cart .items .cartProducts .cartProduct {
   margin: 5px 0;
@@ -151,6 +156,10 @@ article .container .row .productInfo span {
   width: 100%;
   height: 60px;
   display: flex;
+}
+.cart .items .cartProducts .cartProduct h3 {
+  font-size: 20px;
+  line-height: 60px;
 }
 .cart .items .cartProducts .cartProduct img {
   height: 100%;
@@ -161,14 +170,9 @@ article .container .row .productInfo span {
 }
 .cart .items .cartProducts .cartProduct .quantity input {
   width: 100%;
+  text-align: center;
 }
-.cart .items .cartProducts .cartProduct .quantity .button {
-  border: 3px solid black;
-  border-radius: 50px;
-  padding: 0 5px;
-  margin: 5px;
-}
-.cart .items .cartProducts .cartProduct #removeBtn {
+.cart .items .cartProducts .cartProduct .btn-remove {
   border: none;
   padding: 0 30px;
 }

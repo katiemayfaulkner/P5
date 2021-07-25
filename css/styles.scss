@@ -179,10 +179,12 @@ article {
 
   .items {
     padding: 0 15px;
+    margin: 40px 0;
 
     .cartSections{
       display: flex;
       width: 100%;
+      margin-top: 20px;
       
       h3{
         border-bottom: 3px solid black;
@@ -192,13 +194,19 @@ article {
     }
 
     .cartProducts {
-      
+      margin-bottom: 20px;
+
       .cartProduct{
         margin: 5px 0;
         background-color: #f2f2f2;
         width: 100%;
         height: 60px;
         display: flex;
+
+        h3{
+          font-size: 20px;
+          line-height: 60px;
+        }
 
         img{
           height: 100%;
@@ -210,18 +218,11 @@ article {
   
           input{
             width: 100%;
-          }
-  
-          .button{
-            border: 3px solid black;
-            border-radius: 50px;
-            padding: 0 5px;
-            margin: 5px;
-  
+            text-align: center;
           }
         }
   
-        #removeBtn{
+        .btn-remove{
           border: none;
           padding: 0 30px;
         }
@@ -253,8 +254,11 @@ article {
 
 // Confirmation //
 .confirmation {
+
   .container {
+
     .items {
+
       div {
         margin: 5px 0;
         background-color: #f2f2f2;
