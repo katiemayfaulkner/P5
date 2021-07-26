@@ -65,7 +65,7 @@ for (let i = 0; i < localStorage.length; i++){
     updateTotal()
 }
 
-//
+//ALLOW FUNCTIONALITIES WHEN PAGE LOADS
 if (document.readyState == 'loading') {
 
     document.addEventListener('DOMContentLoaded', ready);

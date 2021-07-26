@@ -87,6 +87,9 @@ addBtn.onclick = function addToLocalStorage() {
         // or store user input in local storqge
         localStorage.setItem(name, price)
 
+        addBtn.innerHTML = 'Added!'
+        addBtn.style.width = '120px'
+        
         // var item = [name, price]
         // localStorage.setItem(img, JSON.stringify(item));
         // var test = JSON.parse(localStorage.getItem("testKey"));
