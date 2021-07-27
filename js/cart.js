@@ -95,7 +95,6 @@ function ready() {
 
 };
 
-
 //REMOVE BUTTON
 function removeCart(event) {
     var btnClicked =  event.target;
@@ -119,7 +118,7 @@ function quantityChanged(event){
     updateTotal();
 };
 
-//EMPTY WHOLE CART = EXTRA FEATURE
+//EMPTY WHOLE CART : EXTRA FEATURE
 var emptyBtn = document.getElementById('emptyCart');
 var content = document.getElementById('cartProducts');
 
@@ -151,3 +150,22 @@ function updateTotal() {
     total = Math.round(total * 100) / 100;
     document.getElementById('totalPrice').innerText = '$' + total;
 };
+
+//BUTTON IS DISABLED UNLESS FORM IS FILLED
+function checkform() {
+    var form = document.getElementsByClassName('formInput');
+    var btn = document.getElementById('submitButton');
+    var cansubmit = true;
+
+    for (var i = 0; i < form.length; i++) {
+        if (form[i] == 0) cansubmit = false;
+    }
+
+    if (cansubmit) {
+        btn.disabled = false;
+    }
+    else {
+        btn.disabled = true;
+    }
+}
+ 

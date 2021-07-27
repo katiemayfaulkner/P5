@@ -56,41 +56,30 @@
                     <form>
                         <div class="form-group formInput">
                             <label for="firstName"> First name : </label>
-                            <input id="firstName" class="form-control" required />
+                            <input id="firstName" class="form-control" type="text" onKeyup="checkform()" required />
                         </div>
-        
+                    
                         <div class="form-group formInput">
                             <label for="lastName"> Last name : </label>
-                            <input id="lastName" class="form-control" required />
+                            <input id="lastName" class="form-control" type="text" onKeyup="checkform()" required />
                         </div>
-        
+                    
                         <div class="form-group formInput">
-                            <label for="Address"> Address : </label>
-                            <input id="Address" class="form-control" required />
+                            <label for="address"> Address : </label>
+                            <input id="address" class="form-control" type="text" onKeyup="checkform()" required />
                         </div>
-        
-                        <div class="form-group formInput">
-                            <label for="postalCode"> Postal code : </label>
-                            <input id="postalCode" class="form-control" required />
-                        </div>
-        
+                    
                         <div class="form-group formInput">
                             <label for="city"> City : </label>
-                            <input id="city" class="form-control" required/>
+                            <input id="city" class="form-control" type="text" onKeyup="checkform()" required />
                         </div>
-        
+                    
                         <div class="form-group formInput">
                             <label for="email"> Email : </label>
-                            <input id="email" class="form-control" required />
+                            <input id="email" class="form-control" type="text" onKeyup="checkform()" required />
                         </div>
-        
-                        <div class="form-group formInput">
-                            <label for="number"> Number : </label>
-                            <input id="number" class="form-control"/>
-                        </div>
-                        <a href="Confirmation.html">
-                            <span id="submitBtn" type="submit"> Submit </span>
-                        </a>
+                    
+                        <input id="submitButton" type="submit" disabled="disabled" value="Order Now" />
                     </form>
                 </article>
             </div>
