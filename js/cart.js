@@ -1,69 +1,54 @@
 //DYNAMIC CART ITEMS
 var cart = document.getElementById('cartProducts')
+let cartItems = JSON.parse(localStorage.getItem("camerasInCart"));
 
-for (let i = 0; i < localStorage.length; i++){
-        let key = localStorage.key(i);
-        let value = localStorage.getItem(key);
-        // var image = localStorage.getItem('img')
+for (let i = 0; i < cartItems.length; i++){
+    // let key = localStorage.key(i);
+    // let value = localStorage.getItem(key);
+    camera = cartItems[i];
 
     //Create box
     let box = document.createElement('div');
     box.classList.add('cartProduct')
-
-    cart.appendChild(box);
-
-    //FIXME: fix img localstorage feat
-    //Image
-    // var img = document.createElement('img');
-    // img.classList.add('img');
-    // img.setAttribute('id', 'image');
-    // img.src = key;
-
-    // box.appendChild(img);
+    cart.appendChild(box); //append box to cart
 
     //Title
     var title = document.createElement('h3');
     title.classList.add('title', 'col-3');
     title.setAttribute('id', 'productTitle');
-    title.innerHTML = key;
-
-    box.appendChild(title);
+    title.innerHTML = `${camera.name}`;
+    box.appendChild(title); //append it to box
 
     //Quantity
     var quantityContainer = document.createElement('div');
     quantityContainer.classList.add('quantity', 'col-3');
-
-    box.appendChild(quantityContainer);
+    box.appendChild(quantityContainer); //append it to box
 
     var quantity = document.createElement('input');
     quantity.classList.add('itemQuantity');
     quantity.setAttribute('type', 'number');
     quantity.setAttribute('value', '1');
     quantity.setAttribute('name', 'quantity');
-
-    quantityContainer.appendChild(quantity);
+    quantityContainer.appendChild(quantity); //append it to container
 
     //Price
     var price = document.createElement('h3');
     price.classList.add('price', 'col-3');
     price.setAttribute('id', 'productPrice');
-    price.innerHTML = value;
-
-    box.appendChild(price);
+    price.innerHTML = `${camera.price}`;
+    box.appendChild(price); //append it to box
 
     //Remove
     let remove = document.createElement('button');
     remove.classList.add('btn-remove');
     remove.setAttribute('id', 'removeBtn');
     remove.innerHTML = 'Remove';
+    box.appendChild(remove); //append it to box
 
-    //Append everything
-    box.appendChild(remove);
-
-    console.log(key, value);
+    console.log(title, price);
 
     updateTotal()
-}
+};
 
 //ALLOW FUNCTIONALITIES WHEN PAGE LOADS
 if (document.readyState == 'loading') {
@@ -96,14 +81,25 @@ function ready() {
 };
 
 //REMOVE BUTTON
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get('id');
+
 function removeCart(event) {
     var btnClicked =  event.target;
-    btnClicked.parentElement.remove();
+    parent = btnClicked.parentElement.productId;
+    cart = JSON.parse(localStorage.getItem("camerasInCart"));
 
-    //FIXME: fix delete cart item function
-    var key = JSON.parse(localStorage.getItem(key));
-    // var key = $(this).attr('key');
-    window.localStorage.removeItem('key');
+    for (let camera of cart) {
+        if (camera.id === parent) {    // strict comparison of id's (parent - element in local storage)
+                camIndex = cart.indexOf(camera);
+                cart.splice(camIndex, 1);   //removing camera from local storage array
+
+                element = document.getElementById(parent);  //removing element from the document
+                element.remove();
+        }
+    }
+
+    btnClicked.parentElement.remove();
     
     updateTotal();
 };
@@ -152,9 +148,10 @@ function updateTotal() {
 };
 
 //BUTTON IS DISABLED UNLESS FORM IS FILLED
+var btn = document.getElementById('submitButton');
+
 function checkform() {
     var form = document.getElementsByClassName('formInput');
-    var btn = document.getElementById('submitButton');
     var cansubmit = true;
 
     for (var i = 0; i < form.length; i++) {
@@ -169,3 +166,58 @@ function checkform() {
     }
 }
  
+
+
+
+btn.addEventListener("click", function(){  
+
+  //SEND FORM DATA TO LOCALSTORAGE
+    var firstName = document.getElementById('firstName').value;
+    var lastName = document.getElementById('lastName').value;
+    var address = document.getElementById('address').value;
+    var city = document.getElementById('city').value;
+    var email = document.getElementById('email').value;
+
+    localStorage.setItem('firstName', firstName)
+    localStorage.setItem('lastName', lastName)
+    localStorage.setItem('address', address)
+    localStorage.setItem('city', city)
+    localStorage.setItem('email', email)
+
+    console.log(firstName, lastName, address, city, email)
+
+    window.location.href = "Confirmation.html"
+
+    // fetch("http://localhost:3000/api/cameras/order").then(function(response) {
+    //     console.log(response.text());
+    //     return response;
+    
+    // });
+
+});
+
+
+
+
+
+// const cameraIds = ["5be1ed3f1c9d44000030b061", "5be1ef211c9d44000030b062", "5be9bc241c9d440000a730e7", "5be9c4471c9d440000a730e8", "5be9c4c71c9d440000a730e9"];
+// let productArray = cameraIds.toString();
+
+// fetch('​http://localhost:3000/api/cameras/order', {
+//     method: 'POST',
+//     body: {
+//         contact: {
+//             firstName: string,
+//             lastName: string,
+//             address: string,
+//             city: string,
+//             email: string
+//         },
+//         products: {
+//             productArray
+//         }
+//     }
+// });
+
+
+// location.assign("http://127.0.0.1:5501/Confirmation.html?");

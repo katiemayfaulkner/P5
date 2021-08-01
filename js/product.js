@@ -68,35 +68,76 @@ var addBtn = document.getElementById('addToCart')
 
 addBtn.onclick = function addToLocalStorage() {
    
-    //things to store
-    var name = document.getElementById('productName').textContent
-    var price = document.getElementById('productPrice').textContent
-    var img = document.getElementById('productImg').src
+    // //things to store
+    // var name = document.getElementById('productName').innerHTML
+    // var price = document.getElementById('productPrice').innerHTML
 
-    var oldInput = localStorage.getItem(name, img, price);
+    // var oldInput = localStorage.getItem(name, price);
 
-    //If we already have value, retrieve it
-    if(localStorage.getItem(name, price)){
-        // and update input with old/existing user input
-        addBtn.value = oldInput;
+    // //If we already have value, retrieve it
+    // if(localStorage.getItem(name, price)){
+    //     // and update input with old/existing user input
+    //     addBtn.value = oldInput;
 
-        console.log("Item already added to cart!")
-        alert("Item already added to cart!")
+    //     console.log("Item already added to cart!")
+    //     alert("Item already added to cart!")
         
-    } else{
-        // or store user input in local storqge
-        localStorage.setItem(name, price)
+    // } else{
+    //     // or store user input in local storqge
+    //     localStorage.setItem('name', name)
+    //     localStorage.setItem('price', price)
+    //     // var item = [name, price]
+    //     // localStorage.setItem("product", JSON.stringify(item));
+    //     // var test = JSON.parse(localStorage.getItem("product"));
+    //     // alert(test);
 
-        addBtn.innerHTML = 'Added!'
-        addBtn.style.width = '120px'
-        
-        // var item = [name, price]
-        // localStorage.setItem(img, JSON.stringify(item));
-        // var test = JSON.parse(localStorage.getItem("testKey"));
-        // alert(test);
-        
+    //     addBtn.innerHTML = 'Added!'
+    //     addBtn.style.width = '120px'
+    
+    //     console.log("Item added to cart!")
+    //     console.log(price, name)
+    // }
 
-        console.log("Item added to cart!")
-        console.log(name, price)
-    }
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    let quantity = 1;
+
+    camera = {
+        "id": productId,
+        "name": document.getElementById('productName').innerText,
+        "price": document.getElementById('productPrice').innerText,
+        // "img": document.getElementById('productImg').imageUrl,
+    };
+
+    if (localStorage.getItem("camerasInCart") === null) {           //checking if local storage is 'null' and adding item if 'true'
+        localStorage.setItem("camerasInCart", JSON.stringify([]));
+    };
+
+    let cart = JSON.parse(localStorage.getItem("camerasInCart"));   //assigning local storage item to a variable
+
+    if (cart.length == 0) {     //if there are no objects in the cart it will push active camera
+        cart.push(camera);
+        addBtn.innerHTML = 'Added!';
+        addBtn.style.width = '120px';
+    
+        console.log("Item added to cart!");
+        console.log(camera);
+
+    } else {
+        let index = cart.findIndex(o => o.id == camera.id);     //checking if camera with current id is already in local storage
+        if (index != -1) {                                      //if so, alert user
+            console.log("Item already added to cart!");
+            alert("Item already added to cart!");
+        } else {                                                //if not, add to cart
+            cart.push(camera);
+            addBtn.innerHTML = 'Added!';
+            addBtn.style.width = '120px';
+    
+            console.log("Item added to cart!");
+            console.log(camera);
+        };
+    };
+
+    localStorage.setItem("camerasInCart", JSON.stringify(cart)); //saving item back to local storage
 };
