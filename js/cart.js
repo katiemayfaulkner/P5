@@ -26,6 +26,7 @@ for (let i = 0; i < cartItems.length; i++){
 
     var quantity = document.createElement('input');
     quantity.classList.add('itemQuantity');
+    quantity.setAttribute('id', 'itemQuantity')
     quantity.setAttribute('type', 'number');
     quantity.setAttribute('value', '1');
     quantity.setAttribute('name', 'quantity');
@@ -147,6 +148,8 @@ function updateTotal() {
     document.getElementById('totalPrice').innerText = '$' + total;
 };
 
+//** FORM VALIDATION / ORDER CONFIRMATION **//
+
 //BUTTON IS DISABLED UNLESS FORM IS FILLED
 var btn = document.getElementById('submitButton');
 
@@ -165,59 +168,78 @@ function checkform() {
         btn.disabled = true;
     }
 }
- 
 
-
-
-btn.addEventListener("click", function(){  
-
-  //SEND FORM DATA TO LOCALSTORAGE
+//SEND REQUIRED INFO TO LOCALSTORAGE
+function dataToLocalStorage() {
+    //get user details
     var firstName = document.getElementById('firstName').value;
     var lastName = document.getElementById('lastName').value;
     var address = document.getElementById('address').value;
     var city = document.getElementById('city').value;
     var email = document.getElementById('email').value;
 
-    localStorage.setItem('firstName', firstName)
-    localStorage.setItem('lastName', lastName)
-    localStorage.setItem('address', address)
-    localStorage.setItem('city', city)
-    localStorage.setItem('email', email)
+    // var user = [firstName, lastName, address, city, email];
+    var user = {
+        "firstName": firstName,
+        "lastName": lastName,
+        "address": address,
+        "city": city,
+        "email": email
+    }
+    localStorage.setItem("userDetails", JSON.stringify(user));
+    var formDetails = JSON.parse(localStorage.getItem("userDetails"));
 
-    console.log(firstName, lastName, address, city, email)
-
-    window.location.href = "Confirmation.html"
-
-    // fetch("http://localhost:3000/api/cameras/order").then(function(response) {
-    //     console.log(response.text());
-    //     return response;
+    //get extra details (price, quantity)
+    // var itemQuantity = document.getElementsByClassName('itemQuantity').value
+    // // console.log(itemQuantity)
+    // for(var i = 0; i < itemQuantity.length; i++) {
     
-    // });
+    //     console.log(itemQuantity)
+    // }
 
+    //get product details
+    var products = [];
+    var camerasInCart = JSON.parse(localStorage.getItem("camerasInCart"));
+
+    //get total price
+    var totalPrice = document.getElementById('totalPrice').innerText
+    console.log(totalPrice)
+
+    var total = localStorage.setItem("total", JSON.stringify(total));
+
+    //user and product details = "data"
+    data = {
+        contact: formDetails,                                                          // contact Object with data from ORDER form 
+        products: camerasInCart,
+        total: total
+    }
+
+    console.log(data)
+}
+
+
+
+function validateData() {
+    fetch("http://localhost:3000/api/cameras/order", {
+            method: "POST",
+            // headers: new Headers({
+            //     'contentType': 'application/json'
+            // }),
+            body: JSON.stringify(data), //stringifying the object
+        })
+            .then(async result_ => {
+                const result = await result_.json() //waiting for the result before saving things
+                localStorage.setItem("orderResult", JSON.stringify(result.orderId)) //stocking the value inside 2 localstorages
+                localStorage.setItem("orderData", JSON.stringify(data))
+                window.location = "Confirmation.html"
+            })
+            .catch(error => {
+                console.error(error);
+            })
+
+}    
+
+btn.addEventListener("click", function(){  
+    dataToLocalStorage();
+    validateData();
 });
-
-
-
-
-
-// const cameraIds = ["5be1ed3f1c9d44000030b061", "5be1ef211c9d44000030b062", "5be9bc241c9d440000a730e7", "5be9c4471c9d440000a730e8", "5be9c4c71c9d440000a730e9"];
-// let productArray = cameraIds.toString();
-
-// fetch('​http://localhost:3000/api/cameras/order', {
-//     method: 'POST',
-//     body: {
-//         contact: {
-//             firstName: string,
-//             lastName: string,
-//             address: string,
-//             city: string,
-//             email: string
-//         },
-//         products: {
-//             productArray
-//         }
-//     }
-// });
-
-
-// location.assign("http://127.0.0.1:5501/Confirmation.html?");

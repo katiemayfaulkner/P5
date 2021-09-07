@@ -68,36 +68,6 @@ var addBtn = document.getElementById('addToCart')
 
 addBtn.onclick = function addToLocalStorage() {
    
-    // //things to store
-    // var name = document.getElementById('productName').innerHTML
-    // var price = document.getElementById('productPrice').innerHTML
-
-    // var oldInput = localStorage.getItem(name, price);
-
-    // //If we already have value, retrieve it
-    // if(localStorage.getItem(name, price)){
-    //     // and update input with old/existing user input
-    //     addBtn.value = oldInput;
-
-    //     console.log("Item already added to cart!")
-    //     alert("Item already added to cart!")
-        
-    // } else{
-    //     // or store user input in local storqge
-    //     localStorage.setItem('name', name)
-    //     localStorage.setItem('price', price)
-    //     // var item = [name, price]
-    //     // localStorage.setItem("product", JSON.stringify(item));
-    //     // var test = JSON.parse(localStorage.getItem("product"));
-    //     // alert(test);
-
-    //     addBtn.innerHTML = 'Added!'
-    //     addBtn.style.width = '120px'
-    
-    //     console.log("Item added to cart!")
-    //     console.log(price, name)
-    // }
-
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
 

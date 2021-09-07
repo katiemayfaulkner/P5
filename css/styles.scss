@@ -8,9 +8,12 @@ header {
     padding: 10px 0;
     align-items: center;
 
-    img {
-      height: 50px;
-      margin: 20px;
+    a{
+
+      .logo {
+        height: 50px;
+        margin: 20px;
+      }
     }
 
     a {
@@ -67,27 +70,30 @@ footer {
     padding: 40px;
 
     .row {
-      p {
+
+      p{
         font-size: 18px;
         color: white;
         padding: 0;
         margin: 0;
+        cursor: pointer;
       }
     }
   }
 }
 
 // Single Product Page //
-article {
+.product {
   padding: 30px;
 
   a {
     display: flex;
+    line-height: 23px;
     margin: 15px;
 
     img { 
       margin-right: 5px;
-      
+      height: 23px;  
     }
 
     h1 {
@@ -103,6 +109,7 @@ article {
       background-color: #f2f2f2;
       border-radius: 25px;
       padding: 25px;
+      margin: 35px 0;
       display: flex;
 
       img{
@@ -275,14 +282,33 @@ article {
 
 // Confirmation //
 .confirmation {
-
+  
   .container {
 
-    .article{
-      margin: 15px 0;
+    .message{
+      text-align: center;
+    }
+    
+    article{
+      margin: 40px 0;
+
+      h1{
+        font-size: 28px;
+      }
+
+      p{
+        font-size: 20px;
+        font-weight: 300;
+      }
     }
 
     .items {
+
+      h2{
+        font-size: 25px;
+        padding: 5px 0;
+        border-top: 2px solid black;
+      }
 
       .cartProduct{
         margin: 5px 0;
@@ -291,9 +317,10 @@ article {
         height: 60px;
         display: flex;
 
-        h3{
+        h4{
           font-size: 20px;
           line-height: 60px;
+          font-weight: 400;
         }
 
         .quantity{
@@ -308,16 +335,26 @@ article {
       }
 
       .total {
-        margin-top: 20px;
-      }
+        margin-top: 22px;
 
+        h3{
+          font-size: 22px;
+          padding: 5px 0;
+          border-bottom: 2px solid black;
+        }
+      }
     }
 
-    .row {
-      div {
-        h2 {
-          font-size: 25px;
-        }
+    .info {
+      margin: 40px auto;
+      text-align: center;
+      width: 80%;
+      background-color: #f2f2f2;
+      border-radius: 12px;
+      padding: 25px;
+
+      h3, h2 {
+        font-size: 22px;
       }
     }
   }

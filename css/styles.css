@@ -7,7 +7,7 @@ header .container {
   padding: 10px 0;
   align-items: center;
 }
-header .container img {
+header .container a .logo {
   height: 50px;
   margin: 20px;
 }
@@ -56,56 +56,60 @@ footer .container .row p {
   color: white;
   padding: 0;
   margin: 0;
+  cursor: pointer;
 }
 
-article {
+.product {
   padding: 30px;
 }
-article a {
+.product a {
   display: flex;
+  line-height: 23px;
   margin: 15px;
 }
-article a img {
+.product a img {
   margin-right: 5px;
+  height: 23px;
 }
-article a h1 {
+.product a h1 {
   font-size: 20px;
   color: black;
 }
-article .container .row {
+.product .container .row {
   width: 100%;
   background-color: #f2f2f2;
   border-radius: 25px;
   padding: 25px;
+  margin: 35px 0;
   display: flex;
 }
-article .container .row img {
+.product .container .row img {
   margin: 10px 0;
 }
-article .container .row .productInfo {
+.product .container .row .productInfo {
   margin: 0 auto;
 }
-article .container .row .productInfo #productName {
+.product .container .row .productInfo #productName {
   margin: 10px 0;
   font-size: 27px;
 }
-article .container .row .productInfo #productPrice {
+.product .container .row .productInfo #productPrice {
   font-size: 22px;
 }
-article .container .row .productInfo #productDescription {
+.product .container .row .productInfo #productDescription {
   font-size: 18px;
 }
-article .container .row .productInfo .dropdown .btn {
+.product .container .row .productInfo .dropdown .btn {
   border: 1px solid black;
 }
-article .container .row .productInfo .dropdown #productOptions {
+.product .container .row .productInfo .dropdown #productOptions {
   display: none;
   margin-top: 10px;
 }
-article .container .row .productInfo .dropdown #productOptions.show {
+.product .container .row .productInfo .dropdown #productOptions.show {
   display: flex;
 }
-article .container .row .productInfo span {
+.product .container .row .productInfo span {
   border-radius: 50px;
   color: white;
   font-weight: 500;
@@ -209,8 +213,23 @@ article .container .row .productInfo span {
   background: linear-gradient(160deg, #cacaca 0%, #777777 100%);
 }
 
-.confirmation .container .article {
-  margin: 15px 0;
+.confirmation .container .message {
+  text-align: center;
+}
+.confirmation .container article {
+  margin: 40px 0;
+}
+.confirmation .container article h1 {
+  font-size: 28px;
+}
+.confirmation .container article p {
+  font-size: 20px;
+  font-weight: 300;
+}
+.confirmation .container .items h2 {
+  font-size: 25px;
+  padding: 5px 0;
+  border-top: 2px solid black;
 }
 .confirmation .container .items .cartProduct {
   margin: 5px 0;
@@ -219,9 +238,10 @@ article .container .row .productInfo span {
   height: 60px;
   display: flex;
 }
-.confirmation .container .items .cartProduct h3 {
+.confirmation .container .items .cartProduct h4 {
   font-size: 20px;
   line-height: 60px;
+  font-weight: 400;
 }
 .confirmation .container .items .cartProduct .quantity {
   display: flex;
@@ -232,8 +252,21 @@ article .container .row .productInfo span {
   text-align: center;
 }
 .confirmation .container .items .total {
-  margin-top: 20px;
+  margin-top: 22px;
 }
-.confirmation .container .row div h2 {
-  font-size: 25px;
+.confirmation .container .items .total h3 {
+  font-size: 22px;
+  padding: 5px 0;
+  border-bottom: 2px solid black;
+}
+.confirmation .container .info {
+  margin: 40px auto;
+  text-align: center;
+  width: 80%;
+  background-color: #f2f2f2;
+  border-radius: 12px;
+  padding: 25px;
+}
+.confirmation .container .info h3, .confirmation .container .info h2 {
+  font-size: 22px;
 }/*# sourceMappingURL=styles.css.map */
