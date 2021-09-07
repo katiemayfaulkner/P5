@@ -36,13 +36,18 @@ for (let i = 0; i < cartItems.length; i++){
     price.innerHTML = `${camera.price}`;
     box.appendChild(price);
 
+    //Total
+    var totalBox = document.getElementById('total')
+    var total = document.getElementById('totalPrice');
+    total.classList.add('totalPrice');
+    total.innerText = JSON.parse(localStorage.getItem("total"));
 
     console.log(title, price);
 };
 
 //USER INFORMATION
 var user = document.getElementById('userInfo');
-let userInfo = JSON.parse(localStorage.getItem("userDetails"));
+let userInfo = JSON.parse(localStorage.getItem("user"));
 console.log(userInfo)
 
 for (let i = 0; i < userInfo.length; i++) {

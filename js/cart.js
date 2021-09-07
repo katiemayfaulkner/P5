@@ -186,8 +186,8 @@ function dataToLocalStorage() {
         "city": city,
         "email": email
     }
-    localStorage.setItem("userDetails", JSON.stringify(user));
-    var formDetails = JSON.parse(localStorage.getItem("userDetails"));
+    localStorage.setItem("user", JSON.stringify(user));
+    var formDetails = JSON.parse(localStorage.getItem("user"));
 
     //get extra details (price, quantity)
     // var itemQuantity = document.getElementsByClassName('itemQuantity').value
@@ -205,7 +205,7 @@ function dataToLocalStorage() {
     var totalPrice = document.getElementById('totalPrice').innerText
     console.log(totalPrice)
 
-    var total = localStorage.setItem("total", JSON.stringify(total));
+    var total = localStorage.setItem("total", JSON.stringify(totalPrice));
 
     //user and product details = "data"
     data = {

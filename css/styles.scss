@@ -336,11 +336,19 @@ footer {
 
       .total {
         margin-top: 22px;
+        border-bottom: 2px solid black;
+        display: flex;
+        align-items: baseline;
 
         h3{
           font-size: 22px;
           padding: 5px 0;
-          border-bottom: 2px solid black;
+        }
+
+        span{
+          font-weight: 400;
+          margin: 0 10px;
+          font-size: 20px;
         }
       }
     }
