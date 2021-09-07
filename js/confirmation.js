@@ -45,10 +45,10 @@ for (let i = 0; i < cartItems.length; i++){
     console.log(title, price);
 };
 
-//USER INFORMATION
+// STORE USER INFORMATION
 var user = document.getElementById('userInfo');
 let userInfo = JSON.parse(localStorage.getItem("user"));
-console.log(userInfo)
+console.log(userInfo);
 
 for (let i = 0; i < userInfo.length; i++) {
     
@@ -89,4 +89,10 @@ for (let i = 0; i < userInfo.length; i++) {
     email.classList.add('email')
 
     box.appendChild(email)
+};
+
+//EMPTY LOCALSTORAGE WHEN USER RETURNS TO SHOP
+onclick = function(poop) {
+    localStorage.clear();
 }
+

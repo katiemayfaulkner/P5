@@ -276,4 +276,23 @@ footer .container .row p {
 }
 .confirmation .container .info h3, .confirmation .container .info h2 {
   font-size: 22px;
+}
+.confirmation .container .return {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+}
+.confirmation .container .return a {
+  display: flex;
+  line-height: 30px;
+  margin: 30px;
+}
+.confirmation .container .return a img {
+  margin-right: 5px;
+  height: 25px;
+}
+.confirmation .container .return a h1 {
+  font-size: 20px;
+  color: black;
 }/*# sourceMappingURL=styles.css.map */

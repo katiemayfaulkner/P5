@@ -365,5 +365,26 @@ footer {
         font-size: 22px;
       }
     }
+
+    .return{
+      width: fit-content;
+      margin: 0 auto;
+
+      a {
+        display: flex;
+        line-height: 30px;
+        margin: 30px;
+  
+        img { 
+          margin-right: 5px;
+          height: 25px;  
+        }
+  
+        h1 {
+          font-size: 20px;
+          color: black;
+        }
+      }
+    }
   }
 }
