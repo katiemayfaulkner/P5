@@ -42,53 +42,49 @@ for (let i = 0; i < cartItems.length; i++){
     total.classList.add('totalPrice');
     total.innerText = JSON.parse(localStorage.getItem("total"));
 
-    console.log(title, price);
 };
 
-// STORE USER INFORMATION
-var user = document.getElementById('userInfo');
+//USER INFORMATION
+var userBox = document.getElementById('userInfo');
+
 let userInfo = JSON.parse(localStorage.getItem("user"));
 console.log(userInfo);
 
 for (let i = 0; i < userInfo.length; i++) {
-    
+    user = userInfo[i];
 
-    //create box
-    let box = document.createElement('div');
-    box.classList.add('container')
-    user.appendChild(box);
-
-    //create sections for each user detail
     //first name
-    let firstName = document.createElement('span');
+    let firstName = document.createElement('p');
     firstName.classList.add('firstName')
-    firstName.innerHTML = firstName;
-    box.appendChild(firstName)
+    firstName.innerHTML = `${user.firstName}`;
+    userBox.appendChild(firstName)
+
+    console.log(firstName)
 
 
-    //last name
-    let lastName = document.createElement('span');
-    lastName.classList.add('lastName')
+    // //last name
+    // let lastName = document.createElement('p');
+    // lastName.classList.add('lastName')
+    // lastName.innerHTML = `${user.lastName}`;
+    // userBox.appendChild(lastName)
 
-    box.appendChild(lastName)
+    // //address
+    // let address = document.createElement('p');
+    // address.classList.add('address')
+    // address.innerHTML = `${user.address}`;
+    // userBox.appendChild(address)
 
-    //address
-    let address = document.createElement('span');
-    address.classList.add('address')
+    // //city
+    // let city = document.createElement('span');
+    // city.classList.add('city')
 
-    box.appendChild(address)
+    // userBox.appendChild(city)
 
-    //city
-    let city = document.createElement('span');
-    city.classList.add('city')
+    // //email
+    // let email = document.createElement('p');
+    // email.classList.add('email')
 
-    box.appendChild(city)
-
-    //email
-    let email = document.createElement('span');
-    email.classList.add('email')
-
-    box.appendChild(email)
+    // box.appendChild(email)
 };
 
 //EMPTY LOCALSTORAGE WHEN USER RETURNS TO SHOP

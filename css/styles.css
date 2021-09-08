@@ -64,12 +64,11 @@ footer .container .row p {
 }
 .product a {
   display: flex;
-  line-height: 23px;
   margin: 15px;
 }
 .product a img {
+  height: 25px;
   margin-right: 5px;
-  height: 23px;
 }
 .product a h1 {
   font-size: 20px;

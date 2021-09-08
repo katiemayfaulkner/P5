@@ -82,18 +82,18 @@ footer {
   }
 }
 
+
 // Single Product Page //
 .product {
   padding: 30px;
 
   a {
     display: flex;
-    line-height: 23px;
     margin: 15px;
 
-    img { 
+    img {
+      height: 25px;
       margin-right: 5px;
-      height: 23px;  
     }
 
     h1 {

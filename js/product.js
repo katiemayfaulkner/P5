@@ -77,7 +77,6 @@ addBtn.onclick = function addToLocalStorage() {
         "id": productId,
         "name": document.getElementById('productName').innerText,
         "price": document.getElementById('productPrice').innerText,
-        // "img": document.getElementById('productImg').imageUrl,
     };
 
     if (localStorage.getItem("camerasInCart") === null) {           //checking if local storage is 'null' and adding item if 'true'
