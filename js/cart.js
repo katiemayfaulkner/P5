@@ -1,7 +1,18 @@
+var emptyContent = document.getElementById('emptyContent');
+var box = document.getElementById('cartProducts');
+
+function removeContent() {
+    emptyContent.style.display = "none"
+}
+
+
 //DYNAMIC CART ITEMS
 var cart = document.getElementById('cartProducts')
 let cartItems = JSON.parse(localStorage.getItem("camerasInCart"));
 for (let i = 0; i < cartItems.length; i++){
+
+    removeContent()
+
     // let key = localStorage.key(i);
     // let value = localStorage.getItem(key);
     camera = cartItems[i];
@@ -121,6 +132,7 @@ emptyBtn.onclick = function() {
     content.remove()
     
     updateTotal()
+    location.reload();
 }
 
 //UPDATE CART TOTAL
@@ -148,7 +160,7 @@ function updateTotal() {
 
 //** FORM VALIDATION / ORDER CONFIRMATION **//
 
-//BUTTON IS DISABLED UNLESS FORM IS FILLED
+//ORDER BUTTON IS DISABLED UNLESS FORM IS FILLED
 var btn = document.getElementById('submitButton');
 function checkform() {
     var form = document.getElementsByClassName('formInput');

@@ -33,8 +33,6 @@ header .container a img {
 }
 .allProducts .row .item .content a {
   color: black;
-}
-.allProducts .row .item .content a:hover {
   text-decoration: none;
 }
 .allProducts .row .item .content img {
@@ -137,9 +135,11 @@ footer .container .row p {
   font-size: 20px;
   color: black;
 }
+.cart .row {
+  margin: 20px 0;
+}
 .cart .items {
   padding: 0 15px;
-  margin: 40px 0;
 }
 .cart .items .cartSections {
   display: flex;
@@ -177,6 +177,28 @@ footer .container .row p {
   border: none;
   padding: 0 30px;
 }
+.cart .items #emptyContent {
+  text-align: center;
+  font-size: 22px;
+  width: 80%;
+  margin: 123px 0px;
+}
+.cart .items #emptyContent a {
+  margin: 0 auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-decoration: none;
+}
+.cart .items #emptyContent a button {
+  font-size: 17px;
+  background: linear-gradient(160deg, #e68a0a 0%, #8f5bfe 100%);
+  color: white;
+  padding: 7px 10px;
+  border-radius: 10px;
+  border: none;
+  height: 50px;
+}
 .cart .items .section {
   display: flex;
   justify-content: space-between;
@@ -188,6 +210,7 @@ footer .container .row p {
 }
 .cart .items .section .cartTotal span {
   margin: 0 10px;
+  font-size: 22px;
 }
 .cart .items .section #emptyCart {
   background: linear-gradient(160deg, #e68a0a 0%, #8f5bfe 100%);
@@ -197,6 +220,9 @@ footer .container .row p {
   margin-right: 65px;
   border: none;
   height: 50px;
+}
+.cart .items .section #emptyCart:disabled {
+  background: linear-gradient(160deg, #cacaca 0%, #777777 100%);
 }
 .cart .info {
   padding: 0 15px;
