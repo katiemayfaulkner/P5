@@ -178,25 +178,25 @@ function checkform() {
     }
 }
 
-//SEND REQUIRED INFO TO LOCALSTORAGE
-function dataToLocalStorage() {
+function validateData(data) {
     
-    //get user details
+    //SEND REQUIRED INFO TO LOCALSTORAGE
+    //get contact details
     var firstName = document.getElementById('firstName').value;
     var lastName = document.getElementById('lastName').value;
     var address = document.getElementById('address').value;
     var city = document.getElementById('city').value;
     var email = document.getElementById('email').value;
-    // var user = [firstName, lastName, address, city, email];
-    var user = {
+    // var contact = [firstName, lastName, address, city, email];
+    var contact = {
         "firstName": firstName,
         "lastName": lastName,
         "address": address,
         "city": city,
         "email": email
     }
-    localStorage.setItem("user", JSON.stringify(user));
-    var formDetails = JSON.parse(localStorage.getItem("user"));
+    localStorage.setItem("contact", JSON.stringify(contact));
+    var formDetails = JSON.parse(localStorage.getItem("contact"));
 
     //get extra details (quantity)
     // var itemQuantity = document.getElementsByClassName('itemQuantity').value
@@ -215,38 +215,45 @@ function dataToLocalStorage() {
     console.log(totalPrice)
     var total = localStorage.setItem("total", JSON.stringify(totalPrice));
 
-    //user and product details = "data"
-    data = {
-        contact: formDetails,                                                          // contact Object with data from ORDER form 
-        products: camerasInCart,
-        total: total
-    }
 
-    console.log(data)
-}
 
-//VALIDATION
-function validateData() {
+    // VALIDATION
     fetch("http://localhost:3000/api/cameras/order", {
-            method: "POST",
-            // headers: new Headers({
-            //     'contentType': 'application/json'
-            // }),
-            body: JSON.stringify(data), //stringifying the object
-        })
-            .then(async result_ => {
-                const result = await result_.json() //waiting for the result before saving things
-                // localStorage.setItem("orderResult", JSON.stringify(result.orderId)) //stocking the value inside 2 localstorages
-                // localStorage.setItem("orderData", JSON.stringify(data))
-                window.location = "Confirmation.html"
-            })
-            .catch(error => {
-                console.error(error);
-            })
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            contact: formDetails,  
+            products: camerasInCart,
+            // id: result.orderId,
+            total: total}), //stringifying the object
 
-}    
+    }).then(async result_ => {
+        const response = await result_.json() //waiting for the result before saving things
+        
+
+        //contact and product details
+        data = {
+            contact: formDetails,  
+            products: camerasInCart,
+            id: response.orderId,
+            total: total
+        }
+ 
+        console.log(data)
+
+        // localStorage.setItem("orderResult", JSON.stringify(result.orderId)) //stocking the value inside 2 localstorages
+        localStorage.setItem("orderData", JSON.stringify(data))
+        window.location = "Confirmation.html"
+
+    })
+    .catch(error => {
+        console.error(error);
+    })
+
+} 
 
 btn.addEventListener("click", function(){  
-    dataToLocalStorage();
     validateData();
 });

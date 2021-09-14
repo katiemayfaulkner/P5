@@ -47,7 +47,7 @@ for (let i = 0; i < cartItems.length; i++){
 //USER INFORMATION
 var userBox = document.getElementById('userInfo');
 
-let userInfo = JSON.parse(localStorage.getItem("user"));
+let userInfo = JSON.parse(localStorage.getItem("contact"));
 console.log(userInfo);
 
 for (let i = 0; i < userInfo.length; i++) {
@@ -92,3 +92,28 @@ onclick = function(poop) {
     localStorage.clear();
 }
 
+var idBox = document.getElementById('orderID')
+function getProduct(data) {
+    fetch('http://localhost:3000/api/cameras/order')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+
+            idBox.textContent = `${data.orderID}`;
+            
+        })
+        .catch(err => console.log(err))
+
+
+        // .then(async result_ => { //GET the stringify arr
+        //     const response = await result_.json() //give a ame to that arr
+        //     console.log(data);
+
+        //     idBox.textContent = `${data.orderID}`;
+            
+        // })
+        // .catch((error) => {
+        //     console.log(error);
+        // })
+};
+getProduct();
