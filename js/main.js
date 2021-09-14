@@ -52,7 +52,8 @@ fetch('http://localhost:3000/api/cameras')
 
 
           // Create anchor element.
-          var a = document.createElement('a'); 
+          var a = document.createElement('a');
+          a.style.fontWeight = "500" 
             
           // Set the href property.
           // a.href = "SingleProduct.html" + "?id=" + data[i]._id;  FYI
@@ -67,7 +68,6 @@ fetch('http://localhost:3000/api/cameras')
           // Set the title.
           a.title = "This is Link"; 
             
-
           // Append the anchor element .
           content.append(a);
 
