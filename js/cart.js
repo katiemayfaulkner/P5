@@ -188,15 +188,15 @@ function validateData(data) {
     var city = document.getElementById('city').value;
     var email = document.getElementById('email').value;
     // var contact = [firstName, lastName, address, city, email];
-    var contact = {
+    let contact = {
         "firstName": firstName,
         "lastName": lastName,
         "address": address,
         "city": city,
         "email": email
-    }
+    };
+    
     localStorage.setItem("contact", JSON.stringify(contact));
-    var formDetails = JSON.parse(localStorage.getItem("contact"));
 
     //get extra details (quantity)
     // var itemQuantity = document.getElementsByClassName('itemQuantity').value
@@ -224,7 +224,7 @@ function validateData(data) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            contact: formDetails,  
+            contact: contact,  
             products: camerasInCart,
             // id: result.orderId,
             total: total}), //stringifying the object
@@ -235,7 +235,7 @@ function validateData(data) {
 
         //contact and product details
         data = {
-            contact: formDetails,  
+            contact: contact,  
             products: camerasInCart,
             id: response.orderId,
             total: total

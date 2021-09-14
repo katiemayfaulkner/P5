@@ -45,47 +45,39 @@ for (let i = 0; i < cartItems.length; i++){
 };
 
 //USER INFORMATION
-var userBox = document.getElementById('userInfo');
+var userBox = document.getElementById('userInfo') //.innerHTML = localStorage.getItem("contact");
+var userInfo = JSON.parse(localStorage.getItem("contact"));
 
-let userInfo = JSON.parse(localStorage.getItem("contact"));
-console.log(userInfo);
+//first name
+let firstName = document.createElement('p');
+firstName.classList.add('name')
+firstName.innerHTML = userInfo.firstName;
+userBox.appendChild(firstName)
 
-for (let i = 0; i < userInfo.length; i++) {
-    user = userInfo[i];
+//last name
+let lastName = document.createElement('p');
+lastName.classList.add('name')
+lastName.innerHTML = userInfo.lastName;
+userBox.appendChild(lastName)
 
-    //first name
-    let firstName = document.createElement('p');
-    firstName.classList.add('firstName')
-    firstName.innerHTML = `${user.firstName}`;
-    userBox.appendChild(firstName)
+//email
+let email = document.createElement('p');
+email.classList.add('email')
+email.innerHTML = userInfo.email;
+userBox.appendChild(email)
 
-    console.log(firstName)
+//address
+let address = document.createElement('p');
+address.classList.add('address')
+address.innerHTML = userInfo.address;
+userBox.appendChild(address)
 
+//city
+let city = document.createElement('p');
+city.classList.add('city')
+city.innerHTML = userInfo.city;
+userBox.appendChild(city)
 
-    // //last name
-    // let lastName = document.createElement('p');
-    // lastName.classList.add('lastName')
-    // lastName.innerHTML = `${user.lastName}`;
-    // userBox.appendChild(lastName)
-
-    // //address
-    // let address = document.createElement('p');
-    // address.classList.add('address')
-    // address.innerHTML = `${user.address}`;
-    // userBox.appendChild(address)
-
-    // //city
-    // let city = document.createElement('span');
-    // city.classList.add('city')
-
-    // userBox.appendChild(city)
-
-    // //email
-    // let email = document.createElement('p');
-    // email.classList.add('email')
-
-    // box.appendChild(email)
-};
 
 //EMPTY LOCALSTORAGE WHEN USER RETURNS TO SHOP
 onclick = function(poop) {
@@ -116,4 +108,4 @@ function getProduct(data) {
         //     console.log(error);
         // })
 };
-getProduct();
+// getProduct();

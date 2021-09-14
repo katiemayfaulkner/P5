@@ -301,6 +301,16 @@ footer .container .row p {
 }
 .confirmation .container .info h3, .confirmation .container .info h2 {
   font-size: 22px;
+  margin-bottom: 15px;
+}
+.confirmation .container .info .userInfo p {
+  font-size: 20px;
+  font-weight: 300;
+}
+.confirmation .container .info .userInfo .name {
+  display: inline-flex;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 .confirmation .container .return {
   width: -webkit-fit-content;

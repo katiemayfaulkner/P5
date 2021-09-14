@@ -25,7 +25,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
 
 console.log(productId);
-console.log(urlParams);
+console.log(urlParams); 
 
 var img = document.getElementById('productImg');
 var camera = document.getElementById('productName');
