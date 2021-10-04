@@ -1,20 +1,25 @@
 //CART ITEMS
 var cart = document.getElementById('cartProducts');
-let cartItems = JSON.parse(localStorage.getItem("camerasInCart"));
+let cartItems = JSON.parse(localStorage.getItem("productsInCart"));
 
 for (let i = 0; i < cartItems.length; i++){
-    camera = cartItems[i];
+    product = cartItems[i];
 
     //Create box
     let box = document.createElement('div');
     box.classList.add('cartProduct')
     cart.appendChild(box);
 
+    //image
+    var img = document.createElement('img');
+    img.setAttribute('src', product.imageUrl);
+    box.appendChild(img); //append it to box
+
     //Title
     var title = document.createElement('h4');
     title.classList.add('title', 'col-4');
     title.setAttribute('id', 'productTitle');
-    title.innerHTML = `${camera.name}`;
+    title.innerHTML = `${product.name}`;
     box.appendChild(title);
 
     //Quantity
@@ -33,7 +38,7 @@ for (let i = 0; i < cartItems.length; i++){
     var price = document.createElement('h4');
     price.classList.add('price', 'col-4');
     price.setAttribute('id', 'productPrice');
-    price.innerHTML = `${camera.price}`;
+    price.innerHTML = '$' + `${product.price}`;
     box.appendChild(price);
 
     //Total

@@ -28,7 +28,7 @@ console.log(productId);
 console.log(urlParams); 
 
 var img = document.getElementById('productImg');
-var camera = document.getElementById('productName');
+var product = document.getElementById('productName');
 var price = document.getElementById('productPrice');
 var description = document.getElementById('productDescription');
 let productOptions = document.getElementById('product_options');
@@ -57,7 +57,7 @@ function getProduct() {
             productDetails = data;
 
             img.src = `${data.imageUrl}`;
-            camera.textContent = `${data.name}`;
+            product.textContent = `${data.name}`;
             price.textContent = `${data.price / 100}.00$`;
             description.textContent = `${data.description}`;
             
@@ -86,7 +86,7 @@ productOptions.addEventListener('change', (e) => {
 var addBtn = document.getElementById('addToCart')
 
 addBtn.onclick = function addToLocalStorage() {
-    camera = {
+    product = {
         "id": productDetails._id,
         "name": productDetails.name,
         "price": productDetails.price,
@@ -94,36 +94,36 @@ addBtn.onclick = function addToLocalStorage() {
         "quantity": 1,
     };
 
-    console.log(camera)
+    console.log(product)
 
-    if (localStorage.getItem("camerasInCart") === null) {           //checking if local storage is 'null' and adding item if 'true'
-        localStorage.setItem("camerasInCart", JSON.stringify([]));
+    if (localStorage.getItem("productsInCart") === null) {           //checking if local storage is 'null' and adding item if 'true'
+        localStorage.setItem("productsInCart", JSON.stringify([]));
     };
 
-    let cart = JSON.parse(localStorage.getItem("camerasInCart"));   //assigning local storage item to a variable
+    let cart = JSON.parse(localStorage.getItem("productsInCart"));   //assigning local storage item to a variable
 
     if (cart.length == 0) {     //if there are no objects in the cart it will push active camera
-        cart.push(camera);
+        cart.push(product);
         addBtn.innerHTML = 'Added!';
         addBtn.style.width = '120px';
     
         console.log("Item added to cart!");
-        console.log(camera);
+        console.log(product);
 
     } else {
-        let index = cart.findIndex(o => o.id == camera.id);     //checking if camera with current id is already in local storage
+        let index = cart.findIndex(o => o.id == product.id);     //checking if camera with current id is already in local storage
         if (index != -1) {                                      //if so, alert user
             console.log("Item already added to cart!");
             alert("Item already added to cart!");
         } else {                                                //if not, add to cart
-            cart.push(camera);
+            cart.push(product);
             addBtn.innerHTML = 'Added!';
             addBtn.style.width = '120px';
     
             console.log("Item added to cart!");
-            console.log(camera);
+            console.log(product);
         };
     };
 
-    localStorage.setItem("camerasInCart", JSON.stringify(cart)); //saving item back to local storage
+    localStorage.setItem("productsInCart", JSON.stringify(cart)); //saving item back to local storage
 };
