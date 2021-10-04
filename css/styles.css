@@ -68,6 +68,7 @@ footer .container .row p {
 .product a {
   display: flex;
   margin: 15px;
+  width: 110px;
 }
 .product a img {
   height: 25px;
@@ -137,6 +138,7 @@ footer .container .row p {
 .cart a {
   display: flex;
   margin: 15px;
+  width: 110px;
 }
 .cart a img {
   height: 25px;
@@ -176,20 +178,22 @@ footer .container .row p {
   font-size: 20px;
   line-height: 60px;
 }
-.cart .items .cartProducts .cartProduct img {
-  height: 100%;
+.cart .items .cartProducts .cartProduct .price {
+  padding: 0;
 }
 .cart .items .cartProducts .cartProduct .quantity {
   display: flex;
   justify-content: center;
 }
 .cart .items .cartProducts .cartProduct .quantity input {
-  width: 100%;
+  width: 90%;
   text-align: center;
 }
 .cart .items .cartProducts .cartProduct .btn-remove {
+  padding-left: 12px;
+  font-weight: 500;
+  background-color: transparent;
   border: none;
-  padding: 0 30px;
 }
 .cart .items #emptyContent {
   text-align: center;
@@ -232,7 +236,7 @@ footer .container .row p {
   color: white;
   padding: 10px 15px;
   border-radius: 10px;
-  margin-right: 65px;
+  margin-right: 33px;
   border: none;
   height: 50px;
   box-shadow: rgba(0, 0, 0, 0.26) 0px 3px 10px;

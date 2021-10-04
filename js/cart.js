@@ -22,10 +22,14 @@ for (let i = 0; i < cartItems.length; i++){
     box.classList.add('cartProduct')
     cart.appendChild(box); //append box to cart
 
+    // IMG
+    var img = document.createElement('img');
+    img.setAttribute('src', camera.imageUrl);
+    box.appendChild(img); //append it to box
+
     //Title
     var title = document.createElement('h3');
     title.classList.add('title', 'col-3');
-    title.setAttribute('id', 'productTitle');
     title.innerHTML = `${camera.name}`;
     box.appendChild(title); //append it to box
 
@@ -38,15 +42,16 @@ for (let i = 0; i < cartItems.length; i++){
     quantity.classList.add('itemQuantity');
     quantity.setAttribute('id', 'itemQuantity')
     quantity.setAttribute('type', 'number');
-    quantity.setAttribute('value', '1');
+    quantity.setAttribute('value', camera.quantity);
     quantity.setAttribute('name', 'quantity');
+    quantity.setAttribute('data-index', i);
     quantityContainer.appendChild(quantity); //append it to container
 
     //Price
     var price = document.createElement('h3');
-    price.classList.add('price', 'col-3');
+    price.classList.add('price', 'col-2');
     price.setAttribute('id', 'productPrice');
-    price.innerHTML = `${camera.price}`;
+    price.innerHTML = '$' + `${camera.price}`;
     box.appendChild(price); //append it to box
 
     //Remove
@@ -92,8 +97,40 @@ function ready() {
 };
 
 //REMOVE BUTTON
+
+// var removeBtn = document.getElementsByClassName('btn-remove');
+// removeBtn.onclick = removeCart;
+    
+// for(var i = 0; i < cart.length; i++){
+
+//     var itemId = cart.find(element => element = 'id')
+//     console.log(itemId)
+// }
+
+
+// function removeCart() {
+    
+//     parent = removeBtn.parentElement.itemId;
+//     cart = JSON.parse(localStorage.getItem("camerasInCart"));
+
+//     for (let camera of cart) {
+//         if (camera.id === parent) {    // strict comparison of id's (parent - element in local storage)
+//                 camIndex = cart.indexOf(camera);
+//                 cart.splice(camIndex, 1);   //removing camera from local storage array
+
+//                 // element = document.getElementById(parent);  //removing element from the document
+//                 parent.remove();
+//         }
+//     }
+
+//     // btnClicked.parentElement.remove();   
+//     updateTotal();
+// };
+
+
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
+
 function removeCart(event) {
     var btnClicked =  event.target;
     parent = btnClicked.parentElement.productId;
@@ -114,13 +151,18 @@ function removeCart(event) {
     updateTotal();
 };
 
+
+
 //QUANTITY
 function quantityChanged(event){
     var input = event.target;
 
+    input.value
+
     if(isNaN(input.value) || input.value <= 0) {  //Check if value is invalid (number < or = to 1)
         input.value = 1  // If invalid, change to 1
     };
+
     updateTotal();
 };
 
@@ -162,6 +204,7 @@ function updateTotal() {
 
 //ORDER BUTTON IS DISABLED UNLESS FORM IS FILLED
 var btn = document.getElementById('submitButton');
+
 function checkform() {
     var form = document.getElementsByClassName('formInput');
     var cansubmit = true;
@@ -178,8 +221,8 @@ function checkform() {
     }
 }
 
-function validateData(data) {
-    
+function validateData(data) { 
+
     //SEND REQUIRED INFO TO LOCALSTORAGE
     //get contact details
     var firstName = document.getElementById('firstName').value;
@@ -187,6 +230,7 @@ function validateData(data) {
     var address = document.getElementById('address').value;
     var city = document.getElementById('city').value;
     var email = document.getElementById('email').value;
+
     // var contact = [firstName, lastName, address, city, email];
     let contact = {
         "firstName": firstName,
@@ -195,27 +239,40 @@ function validateData(data) {
         "city": city,
         "email": email
     };
-    
+
     localStorage.setItem("contact", JSON.stringify(contact));
 
-    //get extra details (quantity)
+    // // get extra details (quantity)
     // var itemQuantity = document.getElementsByClassName('itemQuantity').value
-    // // console.log(itemQuantity)
+    // console.log(itemQuantity)
     // for(var i = 0; i < itemQuantity.length; i++) {
     
     //     console.log(itemQuantity)
     // }
 
+    // // get extra details (quantity)
+    // var input = document.getElementById('itemQuantity');
+    // var itemQuantity = document.getElementById('itemQuantity').value;
+
+    // input.onclick = function(){
+    //     for (let i = 0; i < itemQuantity.length; i++){ 
+    //         console.log(itemQuantity);
+    //     }
+    // };
+
     //get product details
     var products = [];
     var camerasInCart = JSON.parse(localStorage.getItem("camerasInCart"));
-    
+
+    for(let i = 0; i < camerasInCart.length; i++) {
+
+        //extract ids from localstorage and push to "products" array
+    }
+
     //get total price
     var totalPrice = document.getElementById('totalPrice').innerText
     console.log(totalPrice)
     var total = localStorage.setItem("total", JSON.stringify(totalPrice));
-
-
 
     // VALIDATION
     fetch("http://localhost:3000/api/cameras/order", {
@@ -224,36 +281,35 @@ function validateData(data) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            contact: contact,  
-            products: camerasInCart,
-            // id: result.orderId,
-            total: total}), //stringifying the object
+                contact: contact,  
+                products: products, //stringifying the object
 
-    }).then(async result_ => {
-        const response = await result_.json() //waiting for the result before saving things
-        
+        }).then(async result_ => {
+            const response = await result_.json() //waiting for the result before saving things   
 
-        //contact and product details
-        data = {
-            contact: contact,  
-            products: camerasInCart,
-            id: response.orderId,
-            total: total
-        }
- 
-        console.log(data)
+            //contact and product details
+            data = {
+                contact: contact,  
+                products: camerasInCart,
+                id: response.orderId,
+                total: total
+            }
+    
+            console.log(data)
 
-        // localStorage.setItem("orderResult", JSON.stringify(result.orderId)) //stocking the value inside 2 localstorages
-        localStorage.setItem("orderData", JSON.stringify(data))
-        window.location = "Confirmation.html"
+            // localStorage.setItem("orderResult", JSON.stringify(result.orderId)) //stocking the value inside 2 localstorages
+            // window.location = "Confirmation.html"
+
+        })
+        .catch(error => {
+            console.error(error);
+        })
 
     })
-    .catch(error => {
-        console.error(error);
-    })
 
-} 
+}
 
 btn.addEventListener("click", function(){  
     validateData();
 });
+

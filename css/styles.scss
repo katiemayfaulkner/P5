@@ -89,6 +89,7 @@ footer {
   a {
     display: flex;
     margin: 15px;
+    width: 110px;
 
     img {
       height: 25px;
@@ -180,6 +181,7 @@ footer {
   a {
     display: flex;
     margin: 15px;
+    width: 110px;
 
     img {
       height: 25px;
@@ -225,13 +227,14 @@ footer {
         height: 60px;
         display: flex;
 
+        
         h3{
           font-size: 20px;
           line-height: 60px;
         }
 
-        img{
-          height: 100%;
+        .price{
+          padding: 0;
         }
   
         .quantity{
@@ -239,14 +242,16 @@ footer {
           justify-content: center;
   
           input{
-            width: 100%;
+            width: 90%;
             text-align: center;
           }
         }
   
         .btn-remove{
+          padding-left: 12px;
+          font-weight: 500;
+          background-color: transparent;
           border: none;
-          padding: 0 30px;
         }
       }
 
@@ -297,7 +302,7 @@ footer {
         color: white;
         padding: 10px 15px;
         border-radius: 10px;
-        margin-right: 65px;
+        margin-right: 33px;
         border: none;
         height: 50px;
         box-shadow: rgba(0, 0, 0, 0.26) 0px 3px 10px;

@@ -33,11 +33,28 @@ var price = document.getElementById('productPrice');
 var description = document.getElementById('productDescription');
 let productOptions = document.getElementById('product_options');
 
+/*
+
+JS Scope
+- Block Scope (KT in a few miles away from home) - A BLOCK (Function, Loop, Condition.... {} is a block)
+- Local Scope (911 number in US) - A variable at the first line of the file
+- Global Scope (COVID in the world) - LocalStorage
+
+*/
+
+
+
+let productDetails = {};
+
 function getProduct() {
+    // THIS IS ASYNC REQUEST... IT'S ALWAYS DELAYED IN JS EXECUTION.
     fetch('http://localhost:3000/api/cameras/' + productId)
         .then(response => response.json())
         .then(data => {
             console.log(data);
+
+            // Store the product object in outer scope!
+            productDetails = data;
 
             img.src = `${data.imageUrl}`;
             camera.textContent = `${data.name}`;
@@ -52,32 +69,32 @@ function getProduct() {
             }
         })
         .catch(err => console.log(err))
+
 };
 getProduct();
 
+console.log(productDetails)
 
 // SELECT INPUT EVENT (LENSES)
 productOptions.addEventListener('change', (e) => {
     // Here's the value, printed in the console, save it wherever you want ;) (localStorage)
     console.log(e.target.value)
 });
-    
+
 
 //SAVE PRODUCT TO LOCALSTORAGE
 var addBtn = document.getElementById('addToCart')
 
 addBtn.onclick = function addToLocalStorage() {
-   
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
-
-    let quantity = 1;
-
     camera = {
-        "id": productId,
-        "name": document.getElementById('productName').innerText,
-        "price": document.getElementById('productPrice').innerText,
+        "id": productDetails._id,
+        "name": productDetails.name,
+        "price": productDetails.price,
+        "imageUrl": productDetails.imageUrl,
+        "quantity": 1,
     };
+
+    console.log(camera)
 
     if (localStorage.getItem("camerasInCart") === null) {           //checking if local storage is 'null' and adding item if 'true'
         localStorage.setItem("camerasInCart", JSON.stringify([]));
