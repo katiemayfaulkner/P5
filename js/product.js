@@ -25,7 +25,6 @@ const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
 
 console.log(productId);
-console.log(urlParams); 
 
 var img = document.getElementById('productImg');
 var product = document.getElementById('productName');
@@ -51,8 +50,6 @@ function getProduct() {
     fetch('http://localhost:3000/api/cameras/' + productId)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
-
             // Store the product object in outer scope!
             productDetails = data;
 
@@ -73,8 +70,6 @@ function getProduct() {
 };
 getProduct();
 
-console.log(productDetails)
-
 // SELECT INPUT EVENT (LENSES)
 productOptions.addEventListener('change', (e) => {
     // Here's the value, printed in the console, save it wherever you want ;) (localStorage)
@@ -93,8 +88,6 @@ addBtn.onclick = function addToLocalStorage() {
         "imageUrl": productDetails.imageUrl,
         "quantity": 1,
     };
-
-    console.log(product)
 
     if (localStorage.getItem("productsInCart") === null) {           //checking if local storage is 'null' and adding item if 'true'
         localStorage.setItem("productsInCart", JSON.stringify([]));

@@ -5,7 +5,6 @@ function removeContent() {
     emptyContent.style.display = "none"
 }
 
-
 // DYNAMIC CART ITEMS
 var cart = document.getElementById('cartProducts')
 let cartItems = JSON.parse(localStorage.getItem("productsInCart"));
@@ -20,6 +19,7 @@ for (let i = 0; i < cartItems.length; i++){
     // Create box
     let box = document.createElement('div');
     box.classList.add('cartProduct')
+    box.setAttribute('data-product', i); 
     cart.appendChild(box); //append box to cart
 
     // IMG
@@ -44,7 +44,7 @@ for (let i = 0; i < cartItems.length; i++){
     quantity.setAttribute('type', 'number');
     quantity.setAttribute('value', product.quantity);
     quantity.setAttribute('name', 'quantity');
-    quantity.setAttribute('data-index', i);
+    quantity.setAttribute('data-index', i);                                       // !!!!!!!!!
     quantityContainer.appendChild(quantity); //append it to container
 
     // Price
@@ -127,7 +127,6 @@ function ready() {
 //     updateTotal();
 // };
 
-
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
 
@@ -150,8 +149,6 @@ function removeCart(event) {
     
     updateTotal();
 };
-
-
 
 // QUANTITY
 function quantityChanged(event){
@@ -264,52 +261,52 @@ function validateData(data) {
 
     //get product details
     var products = [];
-    var productsInCart = JSON.parse(localStorage.getItem("camerasInCart"));
+    var productsInCart = JSON.parse(localStorage.getItem("productsInCart"));
 
     for(let i = 0; i < productsInCart.length; i++) {
-
         //extract ids from localstorage and push to "products" array
-    }
+        let ids = productsInCart.map(a => a.id)[i];
+        products.push(ids)
+    };
+
+    console.log(products);
 
     //get total price
-    var totalPrice = document.getElementById('totalPrice').innerText
-    console.log(totalPrice)
+    var totalPrice = document.getElementById('totalPrice').innerText;
+    console.log(totalPrice);
     var total = localStorage.setItem("total", JSON.stringify(totalPrice));
 
     // VALIDATION
     fetch("http://localhost:3000/api/cameras/order", {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-                contact: contact,  
-                products: products, //stringifying the object
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                    contact: contact,  
+                    products: products, //stringifying the object
 
-        }).then(async result_ => {
-            const response = await result_.json() //waiting for the result before saving things   
+            })
+    }).then(async result_ => {
+        const response = await result_.json() //waiting for the result before saving things   
 
-            //contact and product details
-            data = {
-                contact: contact,  
-                products: productsInCart,
-                id: response.orderId,
-                total: total
-            }
-    
-            console.log(data)
+        //contact and product details
+        data = {
+            contact: contact,  
+            products: productsInCart,
+            id: response.orderId,
+        }
 
-            // localStorage.setItem("orderResult", JSON.stringify(result.orderId)) //stocking the value inside 2 localstorages
-            window.location = "Confirmation.html"
+        console.log(data)
 
-        })
-        .catch(error => {
-            console.error(error);
-        })
+        // localStorage.setItem("orderResult", JSON.stringify(result.orderId)) //stocking the value inside 2 localstorages
+        window.location = "Confirmation.html"
 
     })
-
-}
+    .catch(error => {
+        console.error(error);
+    })
+};
 
 btn.addEventListener("click", function(){  
     validateData();
