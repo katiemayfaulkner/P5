@@ -17,23 +17,27 @@ for (let i = 0; i < cartItems.length; i++){
 
     // Title
     var title = document.createElement('h4');
-    title.classList.add('title', 'col-4');
+    title.classList.add('title', 'col-3');
     title.setAttribute('id', 'productTitle');
     title.innerHTML = `${product.name}`;
     box.appendChild(title);
 
+    // Option
+    var option = document.createElement('h4');
+    option.classList.add('option', 'col-2');
+    option.innerHTML = `${product.option}`;
+    box.appendChild(option); //append it to box
+
     // Quantity
     var quantityContainer = document.createElement('div');
-    quantityContainer.classList.add('quantity', 'col-4');
+    quantityContainer.classList.add('quantity', 'col-2');
     box.appendChild(quantityContainer);
-
-    var quantity = document.createElement('input');
+    
+    var quantity = document.createElement('p');
     quantity.classList.add('itemQuantity');
-    quantity.setAttribute('type', 'number');
-    quantity.setAttribute('value', '1');
-    quantity.setAttribute('name', 'quantity');
+    quantity.innerHTML = 'x ' + `${product.quantity}`;
     quantityContainer.appendChild(quantity);
-
+    
     // Price
     var price = document.createElement('h4');
     price.classList.add('price', 'col-4');
@@ -90,32 +94,19 @@ onclick = function(emptyStorage) {
 }
 
 // Data retrieval
+let orderDetails = {};
+
 var idBox = document.getElementById('orderID')
 
 function getProduct() {
     fetch('http://localhost:3000/api/cameras/order')
         .then(response => response.json())
         .then(data => {
+            orderDetails = data
+
+            idBox.textContent = `${data.orderId}`;  
             console.log(data);
-
-            idBox.innerHTML = data.orderId;
-            
         })
-        .catch((error) => {
-            console.log(error);
-        })
-        
-
-
-        // .then(async result_ => { //GET the stringified arr
-        //     const response = await result_.json() //give a name to that arr
-        //     console.log(response);
-
-        //     idBox.textContent = `${response.orderId}`;
-            
-        // })
-        // .catch((error) => {
-        //     console.log(error);
-        // })       
+        .catch((error) => console.log(error));     
 };
 getProduct();

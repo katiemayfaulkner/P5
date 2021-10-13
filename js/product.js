@@ -30,18 +30,16 @@ var img = document.getElementById('productImg');
 var product = document.getElementById('productName');
 var price = document.getElementById('productPrice');
 var description = document.getElementById('productDescription');
-let productOptions = document.getElementById('product_options');
+let productOptions = document.getElementById('productOptions');
 
 /*
 
 JS Scope
-- Block Scope (KT in a few miles away from home) - A BLOCK (Function, Loop, Condition.... {} is a block)
+- Block Scope (KT a few miles away from home) - A BLOCK (Function, Loop, Condition.... {} is a block)
 - Local Scope (911 number in US) - A variable at the first line of the file
 - Global Scope (COVID in the world) - LocalStorage
 
 */
-
-
 
 let productDetails = {};
 
@@ -60,6 +58,7 @@ function getProduct() {
             
             for (let i = 0; i < data.lenses.length; i++) {
                 let option = document.createElement('option');
+                option.setAttribute('id', 'option')
                 option.value = data.lenses[i];
                 option.innerHTML = data.lenses[i];
                 productOptions.appendChild(option);
@@ -70,23 +69,30 @@ function getProduct() {
 };
 getProduct();
 
-// SELECT INPUT EVENT (LENSES)
-productOptions.addEventListener('change', (e) => {
-    // Here's the value, printed in the console, save it wherever you want ;) (localStorage)
-    console.log(e.target.value)
-});
 
-
-//SAVE PRODUCT TO LOCALSTORAGE
 var addBtn = document.getElementById('addToCart')
 
+productOptions.addEventListener('change', (e) => {      // select input (lenses)
+
+    // Here's the value, printed in the console, save it to products array
+    var lens = e.target.value
+    console.log(lens)
+
+    addBtn.disabled = false
+    addBtn.innerHTML = 'Add to cart';
+
+});
+
 addBtn.onclick = function addToLocalStorage() {
+    
+    //SAVE PRODUCT TO LOCALSTORAGE
     product = {
         "id": productDetails._id,
         "name": productDetails.name,
         "price": productDetails.price,
         "imageUrl": productDetails.imageUrl,
         "quantity": 1,
+        "option": productOptions.value
     };
 
     if (localStorage.getItem("productsInCart") === null) {           //checking if local storage is 'null' and adding item if 'true'
@@ -98,20 +104,20 @@ addBtn.onclick = function addToLocalStorage() {
     if (cart.length == 0) {     //if there are no objects in the cart it will push active camera
         cart.push(product);
         addBtn.innerHTML = 'Added!';
-        addBtn.style.width = '120px';
+        addBtn.disabled = true
     
         console.log("Item added to cart!");
         console.log(product);
 
     } else {
-        let index = cart.findIndex(o => o.id == product.id);     //checking if camera with current id is already in local storage
+        let index = cart.findIndex(o => o.id == product.id + product.option);     //checking if camera with current id is already in local storage
         if (index != -1) {                                      //if so, alert user
             console.log("Item already added to cart!");
             alert("Item already added to cart!");
         } else {                                                //if not, add to cart
             cart.push(product);
             addBtn.innerHTML = 'Added!';
-            addBtn.style.width = '120px';
+            addBtn.disabled = true
     
             console.log("Item added to cart!");
             console.log(product);

@@ -117,7 +117,8 @@ footer .container .row p {
 .product .container .row .productInfo .dropdown #productOptions.show {
   display: flex;
 }
-.product .container .row .productInfo span {
+.product .container .row .productInfo button {
+  border: none;
   border-radius: 50px;
   color: white;
   font-weight: 500;
@@ -130,6 +131,9 @@ footer .container .row p {
   margin: 20px 0;
   transition: 300ms ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.26) 0px 3px 10px;
+}
+.product .container .row .productInfo button:disabled {
+  background: linear-gradient(160deg, #68eee3 0%, #047500 100%);
 }
 
 .cart {
@@ -174,28 +178,29 @@ footer .container .row p {
   height: 60px;
   display: flex;
   border-radius: 5px;
+  box-sizing: border-box;
 }
-.cart .items .cartProducts .cartProduct img {
-  width: 100px;
+.cart .items .cartProducts .cartProduct .prodContainer {
+  display: flex;
+}
+.cart .items .cartProducts .cartProduct .prodContainer img {
+  width: 90px;
   border-radius: 5px;
+  margin-right: 10px;
 }
 .cart .items .cartProducts .cartProduct h3 {
   font-size: 18px;
   line-height: 60px;
 }
-.cart .items .cartProducts .cartProduct .price {
-  padding: 0;
+.cart .items .cartProducts .cartProduct .option {
+  margin-right: 20px;
 }
-.cart .items .cartProducts .cartProduct .quantity {
-  display: flex;
-  justify-content: center;
-}
-.cart .items .cartProducts .cartProduct .quantity input {
-  width: 90%;
+.cart .items .cartProducts .cartProduct .itemQuantity {
+  height: 100%;
   text-align: center;
+  margin-right: 10px;
 }
-.cart .items .cartProducts .cartProduct .btn-remove {
-  padding-left: 12px;
+.cart .items .cartProducts .cartProduct .removeBtn {
   font-weight: 500;
   background-color: transparent;
   border: none;
@@ -295,7 +300,7 @@ footer .container .row p {
   border-radius: 5px;
 }
 .confirmation .container .items .cartProduct h4 {
-  font-size: 20px;
+  font-size: 22px;
   line-height: 60px;
   font-weight: 400;
 }
@@ -303,9 +308,15 @@ footer .container .row p {
   display: flex;
   justify-content: center;
 }
-.confirmation .container .items .cartProduct .quantity input {
-  width: 100%;
+.confirmation .container .items .cartProduct .quantity .itemQuantity {
+  margin: none;
+  font-size: 22px;
+  line-height: 60px;
+  font-weight: 400;
+}
+.confirmation .container .items .price {
   text-align: center;
+  font-size: 22px;
 }
 .confirmation .container .items .total {
   margin-top: 22px;

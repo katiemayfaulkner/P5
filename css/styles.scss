@@ -154,7 +154,8 @@ footer {
           }
         }
 
-        span {
+        button{
+          border: none;
           border-radius: 50px;
           color: white;
           font-weight: 500;
@@ -168,6 +169,11 @@ footer {
           transition: 300ms ease-in-out;
           box-shadow: rgba(0, 0, 0, 0.26) 0px 3px 10px;
 
+        }
+
+        button:disabled{
+          background: linear-gradient(160deg, hsl(175, 80%, 67%) 0%, #047500 100%);
+              
         }
       }
     }
@@ -227,10 +233,16 @@ footer {
         height: 60px;
         display: flex;
         border-radius: 5px;
+        box-sizing: border-box;
 
-        img{
-          width: 100px;
-          border-radius: 5px;
+        .prodContainer{
+          display: flex;
+
+          img{
+            width: 90px;
+            border-radius: 5px;
+            margin-right: 10px;
+          }
         }
 
         h3{
@@ -238,28 +250,22 @@ footer {
           line-height: 60px;
         }
 
-        .price{
-          padding: 0;
+        .option{
+          margin-right: 20px;
         }
-  
-        .quantity{
-          display: flex;
-          justify-content: center;
-  
-          input{
-            width: 90%;
-            text-align: center;
-          }
+ 
+        .itemQuantity{
+          height: 100%;
+          text-align: center;
+          margin-right: 10px;
         }
-  
-        .btn-remove{
-          padding-left: 12px;
+        
+        .removeBtn{
           font-weight: 500;
           background-color: transparent;
           border: none;
         }
       }
-
     }
 
     #emptyContent{
@@ -380,7 +386,7 @@ footer {
         }
 
         h4{
-          font-size: 20px;
+          font-size: 22px;
           line-height: 60px;
           font-weight: 400;
         }
@@ -389,11 +395,18 @@ footer {
           display: flex;
           justify-content: center;
   
-          input{
-            width: 100%;
-            text-align: center;
+          .itemQuantity{
+            margin: none;
+            font-size: 22px;
+            line-height: 60px;
+            font-weight: 400;
           }
         }
+      }
+
+      .price{
+        text-align: center;
+        font-size: 22px;
       }
 
       .total {

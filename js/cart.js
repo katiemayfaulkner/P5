@@ -19,33 +19,46 @@ for (let i = 0; i < cartItems.length; i++){
     // Create box
     let box = document.createElement('div');
     box.classList.add('cartProduct')
+    box.setAttribute('id', 'cartProduct')
     box.setAttribute('data-product', i); 
     cart.appendChild(box); //append box to cart
+
+    // Create container
+    let container = document.createElement('div');
+    container.classList.add('prodContainer', 'col-5')
+    container.setAttribute('id', 'prodContainer')
+    box.appendChild(container); //append box to cart
 
     // IMG
     var img = document.createElement('img');
     img.setAttribute('src', product.imageUrl);
-    box.appendChild(img); //append it to box
+    container.appendChild(img); //append it to box
 
     // Title
     var title = document.createElement('h3');
-    title.classList.add('title', 'col-3');
+    title.classList.add('title');
     title.innerHTML = `${product.name}`;
-    box.appendChild(title); //append it to box
+    container.appendChild(title); //append it to box
 
-    // Quantity
-    var quantityContainer = document.createElement('div');
-    quantityContainer.classList.add('quantity', 'col-3');
-    box.appendChild(quantityContainer); //append it to box
+    // Option
+    var option = document.createElement('h3');
+    option.classList.add('option', 'col-2');
+    option.innerHTML = `${product.option}`;
+    box.appendChild(option); //append it to box
+
+    // // Quantity
+    // var quantityContainer = document.createElement('div');
+    // quantityContainer.classList.add('quantity', 'col-2');
+    // box.appendChild(quantityContainer); //append it to box
 
     var quantity = document.createElement('input');
-    quantity.classList.add('itemQuantity');
+    quantity.classList.add('itemQuantity', 'col-1');
     quantity.setAttribute('id', 'itemQuantity')
     quantity.setAttribute('type', 'number');
     quantity.setAttribute('value', product.quantity);
     quantity.setAttribute('name', 'quantity');
     quantity.setAttribute('data-index', i);                                       // !!!!!!!!!
-    quantityContainer.appendChild(quantity); //append it to container
+    box.appendChild(quantity); //append it to container
 
     // Price
     var price = document.createElement('h3');
@@ -56,12 +69,10 @@ for (let i = 0; i < cartItems.length; i++){
 
     // Remove
     let remove = document.createElement('button');
-    remove.classList.add('btn-remove');
+    remove.classList.add('removeBtn');
     remove.setAttribute('id', 'removeBtn');
     remove.innerHTML = 'Remove';
     box.appendChild(remove); //append it to box
-
-    console.log(title, price);
 
     updateTotal()
 };
@@ -77,13 +88,13 @@ if (document.readyState == 'loading') {
 
 function ready() {
 
-    // REMOVE BUTTON
-    var removeBtn = document.getElementsByClassName('btn-remove');
+    // // REMOVE BUTTON
+    // var removeBtn = document.getElementsByClassName('btn-remove');
 
-    for(var i = 0; i < removeBtn.length; i++) {
-        var btn = removeBtn[i];
-        btn.addEventListener('click', removeCart);
-    };
+    // for(var i = 0; i < removeBtn.length; i++) {
+    //     var btn = removeBtn[i];
+    //     btn.addEventListener('click', removeCart);
+    // };
 
 
     // QUANTITY
@@ -96,7 +107,61 @@ function ready() {
 
 };
 
-// REMOVE BUTTON
+// REMOVE BUTTON                                      
+
+// onclick : find id
+var removeBtn = document.getElementById('removeBtn');
+console.log(removeBtn)
+
+removeBtn.onclick = findId
+
+function findId() {
+    var product = document.getElementById('cartProduct')
+    var storage = JSON.parse(localStorage.getItem('productsInCart'))
+  
+    for(var i = 0; i < storage.length; i++){
+
+        //select ids
+        let productId = storage.map(a => a.id)[i]; 
+        console.log(productId)
+    
+        parent = removeBtn.parentElement
+        console.log(parent)
+
+        for(product of storage) {
+    
+            if (productId === parent) {
+    
+                prodIndex = storage.indexOf(product);
+                storage.splice(prodIndex, 1)
+
+                element = document.getElementById(parent);  //removing element from the document
+                element.remove();
+            }
+        }   
+    }
+}
+
+// removeBtn.forEach(function (button) {
+
+//     button.addEventListener('click', (e) => {
+
+//         e.preventDefault();
+//         parent = button.parentElement.id;   //checking for the id of a parent of delete button
+//         cart = JSON.parse(localStorage.getItem("productsInCart"));
+    
+//         for (let cam of cart) {         //finding camera adequate to parendId of a button
+//             if (cam.id === parent) {    // strict comparison of id's (parent - element in local storage)
+//                 camIndex = cart.indexOf(cam);
+//                 cart.splice(camIndex, 1);   //removing camera from local storage array
+    
+//                 element = document.getElementById(parent);  //removing element from the document
+//                 element.remove();
+//             }
+//         }
+//     })
+// })
+
 
 // var removeBtn = document.getElementsByClassName('btn-remove');
 // removeBtn.onclick = removeCart;
@@ -118,37 +183,40 @@ function ready() {
 //                 camIndex = cart.indexOf(camera);
 //                 cart.splice(camIndex, 1);   //removing camera from local storage array
 
-//                 // element = document.getElementById(parent);  //removing element from the document
+//                 element = document.getElementById(parent);  //removing element from the document
 //                 parent.remove();
 //         }
 //     }
 
-//     // btnClicked.parentElement.remove();   
+//     btnClicked.parentElement.remove();   
 //     updateTotal();
 // };
 
-const urlParams = new URLSearchParams(window.location.search);
-const productId = urlParams.get('id');
+// const urlParams = new URLSearchParams(window.location.search);
+// const productId = urlParams.get('id');
+// console.log(productId)
 
-function removeCart(event) {
-    var btnClicked =  event.target;
-    parent = btnClicked.parentElement.productId;
-    cart = JSON.parse(localStorage.getItem("camerasInCart"));
+// function removeCart(event) {
+//     var btnClicked =  event.target;
+//     parent = btnClicked.parentElement.productId;
+//     cart = JSON.parse(localStorage.getItem("camerasInCart"));
 
-    for (let product of cart) {
-        if (product.id === parent) {    // strict comparison of id's (parent - element in local storage)
-                camIndex = cart.indexOf(product);
-                cart.splice(prodIndex, 1);   //removing camera from local storage array
+//     for (let product of cart) {
+//         if (product.id === parent) {    // strict comparison of id's (parent - element in local storage)
+//                 camIndex = cart.indexOf(product);
+//                 cart.splice(prodIndex, 1);   //removing camera from local storage array
 
-                element = document.getElementById(parent);  //removing element from the document
-                element.remove();
-        }
-    }
+//                 element = document.getElementById(parent);  //removing element from the document
+//                 element.remove();
+//         }
+//     }
 
-    btnClicked.parentElement.remove();
+//     btnClicked.parentElement.remove();
     
-    updateTotal();
-};
+//     updateTotal();
+// };
+
+                              
 
 // QUANTITY
 function quantityChanged(event){
@@ -219,6 +287,37 @@ function checkform() {
     }
 }
 
+
+// get extra details (quantity)
+    // var input = document.getElementById('itemQuantity');
+    // var itemQuantity = document.getElementById('itemQuantity').value;
+
+    // input.onclick = function(){
+    //     for (let i = 0; i < itemQuantity.length; i++){ 
+    //         console.log(itemQuantity);
+    //     }
+    // };
+
+
+
+// get inputs
+    var input = document.getElementById('itemQuantity');
+
+//get values
+    var quantities = document.getElementById('itemQuantity').value;
+
+    for(let i = 0; i < itemQuantity.length; i++) {
+        
+    }
+
+//track value changes
+
+//store to localstorage
+                              
+                                  
+
+
+
 // Validation
 function validateData(data) { 
 
@@ -241,23 +340,14 @@ function validateData(data) {
 
     localStorage.setItem("contact", JSON.stringify(contact));
 
-    // // get extra details (quantity)
-    // var itemQuantity = document.getElementsByClassName('itemQuantity').value
-    // console.log(itemQuantity)
-    // for(var i = 0; i < itemQuantity.length; i++) {
-    
-    //     console.log(itemQuantity)
-    // }
 
-    // // get extra details (quantity)
-    // var input = document.getElementById('itemQuantity');
-    // var itemQuantity = document.getElementById('itemQuantity').value;
 
-    // input.onclick = function(){
-    //     for (let i = 0; i < itemQuantity.length; i++){ 
-    //         console.log(itemQuantity);
-    //     }
-    // };
+
+    // get extra details (quantity)                                                      
+
+
+
+
 
     //get product details
     var products = [];
@@ -311,4 +401,3 @@ function validateData(data) {
 btn.addEventListener("click", function(){  
     validateData();
 });
-
