@@ -171,6 +171,15 @@ footer .container .row p {
   font-size: 20px;
   margin-right: 10px;
 }
+.cart .items .cartSections .prod {
+  width: 250px;
+}
+.cart .items .cartSections .lens {
+  width: 195px;
+}
+.cart .items .cartProducts .col- {
+  margin: 0;
+}
 .cart .items .cartProducts .cartProduct {
   margin: 5px 0;
   background-color: #f2f2f2;
@@ -182,6 +191,7 @@ footer .container .row p {
 }
 .cart .items .cartProducts .cartProduct .prodContainer {
   display: flex;
+  width: 300px;
 }
 .cart .items .cartProducts .cartProduct .prodContainer img {
   width: 90px;
@@ -194,6 +204,7 @@ footer .container .row p {
 }
 .cart .items .cartProducts .cartProduct .option {
   margin-right: 20px;
+  width: 200px;
 }
 .cart .items .cartProducts .cartProduct .itemQuantity {
   height: 100%;
@@ -202,8 +213,15 @@ footer .container .row p {
 }
 .cart .items .cartProducts .cartProduct .removeBtn {
   font-weight: 500;
-  background-color: transparent;
-  border: none;
+  position: relative;
+  cursor: pointer;
+}
+.cart .items .cartProducts .cartProduct .removeBtn img {
+  height: 20px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 .cart .items #emptyContent {
   text-align: center;

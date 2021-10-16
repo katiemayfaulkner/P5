@@ -222,9 +222,21 @@ footer {
         font-size: 20px;
         margin-right: 10px;
       }
+
+      .prod {
+        width: 250px;
+      }
+
+      .lens {
+        width: 195px;
+      }
     }
 
     .cartProducts {
+
+      .col-{
+        margin: 0;
+      }
 
       .cartProduct{
         margin: 5px 0;
@@ -237,6 +249,7 @@ footer {
 
         .prodContainer{
           display: flex;
+          width: 300px;
 
           img{
             width: 90px;
@@ -252,6 +265,7 @@ footer {
 
         .option{
           margin-right: 20px;
+          width: 200px;
         }
  
         .itemQuantity{
@@ -262,8 +276,16 @@ footer {
         
         .removeBtn{
           font-weight: 500;
-          background-color: transparent;
-          border: none;
+          position: relative;
+          cursor: pointer;
+
+          img{
+            height: 20px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+          }
         }
       }
     }

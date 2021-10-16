@@ -94,19 +94,19 @@ onclick = function(emptyStorage) {
 }
 
 // Data retrieval
-let orderDetails = {};
-
 var idBox = document.getElementById('orderID')
+
+let orderDetails = {};
 
 function getProduct() {
     fetch('http://localhost:3000/api/cameras/order')
-        .then(response => response.json())
-        .then(data => {
-            orderDetails = data
-
-            idBox.textContent = `${data.orderId}`;  
-            console.log(data);
-        })
-        .catch((error) => console.log(error));     
+    .then(response => response.json())
+    .then(data => {
+        orderDetails = data
+        
+        idBox.textContent = `${data.orderId}`;  
+        console.log(data);
+    })
+    .catch((error) => console.log(error));     
 };
 getProduct();

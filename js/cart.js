@@ -25,7 +25,7 @@ for (let i = 0; i < cartItems.length; i++){
 
     // Create container
     let container = document.createElement('div');
-    container.classList.add('prodContainer', 'col-5')
+    container.classList.add('prodContainer')
     container.setAttribute('id', 'prodContainer')
     box.appendChild(container); //append box to cart
 
@@ -42,7 +42,7 @@ for (let i = 0; i < cartItems.length; i++){
 
     // Option
     var option = document.createElement('h3');
-    option.classList.add('option', 'col-2');
+    option.classList.add('option');
     option.innerHTML = `${product.option}`;
     box.appendChild(option); //append it to box
 
@@ -68,44 +68,32 @@ for (let i = 0; i < cartItems.length; i++){
     box.appendChild(price); //append it to box
 
     // Remove
-    let remove = document.createElement('button');
-    remove.classList.add('removeBtn');
-    remove.setAttribute('id', 'removeBtn');
-    remove.innerHTML = 'Remove';
-    box.appendChild(remove); //append it to box
+    // let remove = document.createElement('button');
+    // remove.classList.add('removeBtn');
+    // remove.setAttribute('id', 'removeBtn');
+    // remove.innerHTML = 'Remove';
+    // box.appendChild(remove); //append it to box
+
+    let btnContainer = document.createElement('div');
+    btnContainer.classList.add('removeBtn', 'col-1');
+    btnContainer.setAttribute('id', 'removeBtn');
+    box.appendChild(btnContainer); //append it to box
+
+    let remove = document.createElement('img');
+    remove.src = "img/bin.png"; 
+    btnContainer.appendChild(remove);
+
 
     updateTotal()
 };
 
-// ALLOW FUNCTIONALITIES WHEN PAGE LOADS
-if (document.readyState == 'loading') {
+// REMOVE BUTTON
+// var removeBtn = document.getElementsByClassName('btn-remove');
 
-    document.addEventListener('DOMContentLoaded', ready);
-
-} else {
-    ready();
-};
-
-function ready() {
-
-    // // REMOVE BUTTON
-    // var removeBtn = document.getElementsByClassName('btn-remove');
-
-    // for(var i = 0; i < removeBtn.length; i++) {
-    //     var btn = removeBtn[i];
-    //     btn.addEventListener('click', removeCart);
-    // };
-
-
-    // QUANTITY
-    var quantityInput = document.getElementsByClassName('itemQuantity');
-
-    for(var i = 0; i < quantityInput.length; i++) {
-        var input = quantityInput[i];
-        input.addEventListener('change', quantityChanged);
-    };
-
-};
+// for(var i = 0; i < removeBtn.length; i++) {
+//     var btn = removeBtn[i];
+//     btn.addEventListener('click', removeCart);
+// };
 
 // REMOVE BUTTON                                      
 
@@ -219,17 +207,34 @@ function findId() {
                               
 
 // QUANTITY
+var quantityInput = document.getElementsByClassName('itemQuantity');
+
+for(var i = 0; i < quantityInput.length; i++) {
+    var input = quantityInput[i];
+    input.addEventListener('change', quantityChanged);
+};
+
 function quantityChanged(event){
     var input = event.target;
+    var value = input.value
 
-    input.value
-
-    if(isNaN(input.value) || input.value <= 0) {  //Check if value is invalid (number < or = to 1)
-        input.value = 1  // If invalid, change to 1
+    if(isNaN(value) || value <= 0) {  //Check if value is invalid (number < or = to 1)
+        value = 1  // If invalid, change to 1
     };
 
+    console.log(value)
+
+    for(var i = 0; i < quantityInput.length; i++) {
+
+        localStorage.setItem('qty', JSON.stringify(value))
+    }
+ 
     updateTotal();
 };
+
+
+
+
 
 // EMPTY WHOLE CART : EXTRA FEATURE
 var emptyBtn = document.getElementById('emptyCart');
@@ -266,12 +271,12 @@ function updateTotal() {
 };
 
 
-//** FORM VALIDATION / ORDER CONFIRMATION **//
+// FORM VALIDATION / ORDER CONFIRMATION
 
-// Order button is disabled unless form is filled
 var btn = document.getElementById('submitButton');
-
 function checkform() {
+
+    // Order button is disabled unless form is filled
     var form = document.getElementsByClassName('formInput');
     var cansubmit = true;
 
@@ -287,49 +292,16 @@ function checkform() {
     }
 }
 
-
-// get extra details (quantity)
-    // var input = document.getElementById('itemQuantity');
-    // var itemQuantity = document.getElementById('itemQuantity').value;
-
-    // input.onclick = function(){
-    //     for (let i = 0; i < itemQuantity.length; i++){ 
-    //         console.log(itemQuantity);
-    //     }
-    // };
-
-
-
-// get inputs
-    var input = document.getElementById('itemQuantity');
-
-//get values
-    var quantities = document.getElementById('itemQuantity').value;
-
-    for(let i = 0; i < itemQuantity.length; i++) {
-        
-    }
-
-//track value changes
-
-//store to localstorage
-                              
-                                  
-
-
-
 // Validation
 function validateData(data) { 
 
-    //SEND REQUIRED INFO TO LOCALSTORAGE
-    //get contact details
+    // contact details
     var firstName = document.getElementById('firstName').value;
     var lastName = document.getElementById('lastName').value;
     var address = document.getElementById('address').value;
     var city = document.getElementById('city').value;
     var email = document.getElementById('email').value;
 
-    // var contact = [firstName, lastName, address, city, email];
     let contact = {
         "firstName": firstName,
         "lastName": lastName,
@@ -338,30 +310,19 @@ function validateData(data) {
         "email": email
     };
 
-    localStorage.setItem("contact", JSON.stringify(contact));
+    localStorage.setItem("contact", JSON.stringify(contact));                                                     
 
-
-
-
-    // get extra details (quantity)                                                      
-
-
-
-
-
-    //get product details
+    // product details
     var products = [];
     var productsInCart = JSON.parse(localStorage.getItem("productsInCart"));
-
+    
     for(let i = 0; i < productsInCart.length; i++) {
-        //extract ids from localstorage and push to "products" array
+        //extract ids from localstorage and push to "products" array for validation
         let ids = productsInCart.map(a => a.id)[i];
         products.push(ids)
     };
 
-    console.log(products);
-
-    //get total price
+    // total price
     var totalPrice = document.getElementById('totalPrice').innerText;
     console.log(totalPrice);
     var total = localStorage.setItem("total", JSON.stringify(totalPrice));
