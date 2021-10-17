@@ -313,14 +313,23 @@ footer .container .row p {
   display: flex;
   border-radius: 5px;
 }
-.confirmation .container .items .cartProduct img {
-  width: 100px;
+.confirmation .container .items .cartProduct .prodContainer {
+  display: flex;
+  width: 400px;
+}
+.confirmation .container .items .cartProduct .prodContainer img {
+  width: 90px;
   border-radius: 5px;
+  margin-right: 10px;
 }
 .confirmation .container .items .cartProduct h4 {
   font-size: 22px;
   line-height: 60px;
   font-weight: 400;
+}
+.confirmation .container .items .cartProduct .option {
+  margin-right: 20px;
+  width: 200px;
 }
 .confirmation .container .items .cartProduct .quantity {
   display: flex;

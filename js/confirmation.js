@@ -10,21 +10,27 @@ for (let i = 0; i < orderResult.products.length; i++) {
     box.classList.add('cartProduct')
     cart.appendChild(box);
 
+    // Create container
+    let container = document.createElement('div');
+    container.classList.add('prodContainer')
+    container.setAttribute('id', 'prodContainer')
+    box.appendChild(container); //append box to cart
+
     // image
     let img = document.createElement('img');
     img.setAttribute('src', product.imageUrl);
-    box.appendChild(img); //append it to box
+    container.appendChild(img); //append it to box
 
     // Title
     let title = document.createElement('h4');
-    title.classList.add('title', 'col-3');
+    title.classList.add('title');
     title.setAttribute('id', 'productTitle');
     title.innerHTML = `${product.name}`;
-    box.appendChild(title);
+    container.appendChild(title);
 
     // Option
     let option = document.createElement('h4');
-    option.classList.add('option', 'col-2');
+    option.classList.add('option');
     option.innerHTML = `${product.option}`;
     box.appendChild(option); //append it to box
 
@@ -40,7 +46,7 @@ for (let i = 0; i < orderResult.products.length; i++) {
     
     // Price
     let price = document.createElement('h4');
-    price.classList.add('price', 'col-4');
+    price.classList.add('price', 'col-3');
     price.setAttribute('id', 'productPrice');
     price.innerHTML = '$' + `${product.price}`;
     box.appendChild(price);
