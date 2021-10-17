@@ -45,7 +45,7 @@ for (let i = 0; i < cartItems.length; i++){
 
     // Quantity
     let quantity = document.createElement('input');
-    quantity.classList.add('itemQuantity', 'col-1');
+    quantity.classList.add('itemQuantity');
     quantity.setAttribute('id', 'itemQuantity')
     quantity.setAttribute('type', 'number');
     quantity.setAttribute('value', product.quantity);
@@ -55,17 +55,18 @@ for (let i = 0; i < cartItems.length; i++){
 
     // Price
     let price = document.createElement('h3');
-    price.classList.add('price', 'col-2');
+    price.classList.add('price');
     price.setAttribute('id', 'productPrice');
     price.innerHTML = '$' + `${product.price}`;
     box.appendChild(price); //append it to box
 
-    // Remove
-    let btnContainer = document.createElement('div');
-    btnContainer.classList.add('removeBtn', 'col-1');
-    btnContainer.setAttribute('id', 'removeBtn');
-    btnContainer.setAttribute('data-index', i);
-    btnContainer.addEventListener('click', function(e) {
+    // Remove    
+    let remove = document.createElement('img');
+    remove.src = "img/bin.png"; 
+    remove.classList.add('removeBtn');
+    remove.setAttribute('id', 'removeBtn');
+    remove.setAttribute('data-index', i);
+    remove.addEventListener('click', function(e) {
         console.log(e);
         console.log(e.target.attributes['data-index'].value); // 0
 
@@ -74,12 +75,8 @@ for (let i = 0; i < cartItems.length; i++){
         localStorage.setItem('productsInCart', JSON.stringify(cartItems));
         location.reload();
     })
-    
-    let remove = document.createElement('img');
-    remove.src = "img/bin.png"; 
-    btnContainer.appendChild(remove);
 
-    box.appendChild(btnContainer); //append it to box
+    box.appendChild(remove); //append it to box
 
     updateTotal()
 };                           
