@@ -1,55 +1,20 @@
-// OOP - OBJECT ORIENTED PROGRAMMING
-// class Human {
-//     constructor(name, skinColor) {
-//         this.name = name;
-//         this.skinColor = skinColor;
-//         this.eyes = 2;
-//         this.legs = 2;
-//     }
-
-//     walk = () => {
-//         console.log('I q, zqlking')
-//     }
-
-//     talk = (intro) => {
-//         console.log(`${intro} My name is ${this.name} and skin color is ${this.skinColor}, and I hqve ${this.eyes} eyes`)
-//     }
-// }
-
-// let yahya = new Human('Yahyq', 'normal');
-// yahya.talk('BOM BOM BOM BOM.  ')
-
-    
 // GET SINGLE PROD DETAILS FROM THE API VIA PROD ID 
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
 
-console.log(productId);
-
-var img = document.getElementById('productImg');
-var product = document.getElementById('productName');
-var price = document.getElementById('productPrice');
-var description = document.getElementById('productDescription');
+let img = document.getElementById('productImg');
+let product = document.getElementById('productName');
+let price = document.getElementById('productPrice');
+let description = document.getElementById('productDescription');
 let productOptions = document.getElementById('productOptions');
-
-/*
-
-JS Scope
-- Block Scope (KT a few miles away from home) - A BLOCK (Function, Loop, Condition.... {} is a block)
-- Local Scope (911 number in US) - A variable at the first line of the file
-- Global Scope (COVID in the world) - LocalStorage
-
-*/
 
 let productDetails = {};
 
 function getProduct() {
-    // THIS IS ASYNC REQUEST... IT'S ALWAYS DELAYED IN JS EXECUTION.
     fetch('http://localhost:3000/api/cameras/' + productId)
         .then(response => response.json())
         .then(data => {
-            // Store the product object in outer scope!
-            productDetails = data;
+            productDetails = data; // Store the product object in outer scope
 
             img.src = `${data.imageUrl}`;
             product.textContent = `${data.name}`;
@@ -70,13 +35,12 @@ function getProduct() {
 getProduct();
 
 
-var addBtn = document.getElementById('addToCart')
+let addBtn = document.getElementById('addToCart')
 
-productOptions.addEventListener('change', (e) => {      // select input (lenses)
+productOptions.addEventListener('change', (e) => { // select input (lenses)
 
-    // Here's the value, printed in the console, save it to products array
-    var lens = e.target.value
-    console.log(lens)
+    // save value to products array
+    let lens = e.target.value
 
     addBtn.disabled = false
     addBtn.innerHTML = 'Add to cart';
@@ -111,10 +75,10 @@ addBtn.onclick = function addToLocalStorage() {
 
     } else {
         let index = cart.findIndex(o => o.id == product.id + product.option);     //checking if camera with current id is already in local storage
-        if (index != -1) {                                      //if so, alert user
+        if (index != -1) {                                 //if so, alert user
             console.log("Item already added to cart!");
             alert("Item already added to cart!");
-        } else {                                                //if not, add to cart
+        } else {                                           //if not, add to cart
             cart.push(product);
             addBtn.innerHTML = 'Added!';
             addBtn.disabled = true

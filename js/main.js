@@ -3,7 +3,6 @@ const allProducts = document.getElementById('allProducts');
 fetch('http://localhost:3000/api/cameras')
     .then(response => response.json())
     .then(data => {
-        console.log(data);
 
         for(let i = 0; i < data.length; i++) {
           // Create a box
@@ -52,15 +51,14 @@ fetch('http://localhost:3000/api/cameras')
 
 
           // Create anchor element.
-          var a = document.createElement('a');
+          let a = document.createElement('a');
           a.style.fontWeight = "500" 
             
           // Set the href property.
-          // a.href = "SingleProduct.html" + "?id=" + data[i]._id;  FYI
           a.href = `product.html?id=${data[i]._id}`; 
 
           // Create the text node for anchor element.
-          var link = document.createTextNode("See lens options");
+          let link = document.createTextNode("See lens options");
             
           // Append the text node to anchor element.
           a.appendChild(link); 
@@ -70,8 +68,6 @@ fetch('http://localhost:3000/api/cameras')
             
           // Append the anchor element .
           content.append(a);
-
-          console.log(content)
         }
     })
     .catch(err => console.log(err))
