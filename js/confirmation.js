@@ -10,16 +10,16 @@ for (let i = 0; i < orderResult.products.length; i++) {
     box.classList.add('cartProduct')
     cart.appendChild(box);
 
+    // image
+    let img = document.createElement('img');
+    img.setAttribute('src', product.imageUrl);
+    box.appendChild(img); //append it to box
+
     // Create container
     let container = document.createElement('div');
     container.classList.add('prodContainer')
     container.setAttribute('id', 'prodContainer')
     box.appendChild(container); //append box to cart
-
-    // image
-    let img = document.createElement('img');
-    img.setAttribute('src', product.imageUrl);
-    container.appendChild(img); //append it to box
 
     // Title
     let title = document.createElement('h4');
@@ -32,12 +32,12 @@ for (let i = 0; i < orderResult.products.length; i++) {
     let option = document.createElement('h4');
     option.classList.add('option');
     option.innerHTML = `${product.option}`;
-    box.appendChild(option); //append it to box
+    container.appendChild(option); //append it to box
 
     // Quantity
     let quantityContainer = document.createElement('div');
-    quantityContainer.classList.add('quantity', 'col-2');
-    box.appendChild(quantityContainer);
+    quantityContainer.classList.add('quantity');
+    container.appendChild(quantityContainer);
     
     let quantity = document.createElement('p');
     quantity.classList.add('itemQuantity');
@@ -46,10 +46,10 @@ for (let i = 0; i < orderResult.products.length; i++) {
     
     // Price
     let price = document.createElement('h4');
-    price.classList.add('price', 'col-3');
+    price.classList.add('price');
     price.setAttribute('id', 'productPrice');
     price.innerHTML = '$' + `${product.price}`;
-    box.appendChild(price);
+    container.appendChild(price);
 
     // Total
     let totalBox = document.getElementById('total')

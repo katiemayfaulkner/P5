@@ -20,16 +20,17 @@ for (let i = 0; i < cartItems.length; i++){
     box.setAttribute('id', 'cartProduct') 
     cart.appendChild(box); //append box to cart
 
+    // IMG
+    let img = document.createElement('img');
+    img.classList.add('prodImage')
+    img.setAttribute('src', product.imageUrl);
+    box.appendChild(img); //append it to box
+
     // Create container
     let container = document.createElement('div');
     container.classList.add('prodContainer')
     container.setAttribute('id', 'prodContainer')
     box.appendChild(container); //append box to cart
-
-    // IMG
-    let img = document.createElement('img');
-    img.setAttribute('src', product.imageUrl);
-    container.appendChild(img); //append it to box
 
     // Title
     let title = document.createElement('h3');
@@ -39,26 +40,26 @@ for (let i = 0; i < cartItems.length; i++){
 
     // Option
     let option = document.createElement('h3');
-    option.classList.add('option');
+    option.classList.add('option', 'sectionItem');
     option.innerHTML = `${product.option}`;
-    box.appendChild(option); //append it to box
+    container.appendChild(option); //append it to box
 
     // Quantity
     let quantity = document.createElement('input');
-    quantity.classList.add('itemQuantity');
+    quantity.classList.add('itemQuantity', 'sectionItem');
     quantity.setAttribute('id', 'itemQuantity')
     quantity.setAttribute('type', 'number');
     quantity.setAttribute('value', product.quantity);
     quantity.setAttribute('name', 'quantity');
     quantity.setAttribute('data-index', i);
-    box.appendChild(quantity); //append it to container
+    container.appendChild(quantity); //append it to container
 
     // Price
     let price = document.createElement('h3');
     price.classList.add('price');
     price.setAttribute('id', 'productPrice');
     price.innerHTML = '$' + `${product.price}`;
-    box.appendChild(price); //append it to box
+    container.appendChild(price); //append it to box
 
     // Remove    
     let remove = document.createElement('img');
@@ -67,16 +68,13 @@ for (let i = 0; i < cartItems.length; i++){
     remove.setAttribute('id', 'removeBtn');
     remove.setAttribute('data-index', i);
     remove.addEventListener('click', function(e) {
-        console.log(e);
-        console.log(e.target.attributes['data-index'].value); // 0
 
         let index = e.target.attributes['data-index'].value;
         cartItems.splice(index, 1);
         localStorage.setItem('productsInCart', JSON.stringify(cartItems));
         location.reload();
     })
-
-    box.appendChild(remove); //append it to box
+    container.appendChild(remove); //append it to box
 
     updateTotal()
 };                           
