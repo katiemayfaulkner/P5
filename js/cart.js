@@ -1,3 +1,4 @@
+// CART CONTENT (WHEN EMPTY)
 let emptyContent = document.getElementById('emptyContent');
 let box = document.getElementById('cartProducts');
 
@@ -9,8 +10,6 @@ function removeContent() {
 let cart = document.getElementById('cartProducts')
 let cartItems = JSON.parse(localStorage.getItem("productsInCart"));
 for (let i = 0; i < cartItems.length; i++){
-
-    removeContent()
 
     product = cartItems[i];
 
@@ -51,6 +50,7 @@ for (let i = 0; i < cartItems.length; i++){
     quantity.setAttribute('type', 'number');
     quantity.setAttribute('value', product.quantity);
     quantity.setAttribute('name', 'quantity');
+    quantity.setAttribute('min', 1);
     quantity.setAttribute('data-index', i);
     container.appendChild(quantity); //append it to container
 
@@ -76,6 +76,7 @@ for (let i = 0; i < cartItems.length; i++){
     })
     container.appendChild(remove); //append it to box
 
+    removeContent()
     updateTotal()
 };                           
 
@@ -92,15 +93,15 @@ function quantityChanged(e) {
     let value = input.value;
     let index = e.target.attributes['data-index'].value;
 
-    if(isNaN(value) || value <= 0) {  //Check if value is invalid (number < or = to 1)
+    if(value <= 0) {  //Check if value is invalid (number < or = to 1)
         value = 1  // If invalid, change to 1
+        input.value = 1; // UPDATING THE INPUT VISIBLE VALUE ITSELF.
     };
 
     cartItems[index].quantity = parseInt(value);
 
     localStorage.setItem('productsInCart', JSON.stringify(cartItems));
-    updateTotal()
-    
+    updateTotal()    
 };
 
 // EMPTY WHOLE CART : EXTRA FEATURE
@@ -137,9 +138,7 @@ function updateTotal() {
     document.getElementById('totalPrice').innerText = '$' + total;
 };
 
-
 // FORM VALIDATION / ORDER CONFIRMATION
-
 let btn = document.getElementById('submitButton');
 function checkform() {
 
